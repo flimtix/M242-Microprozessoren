@@ -2,6 +2,8 @@
 # Action: https://github.com/sercanuste/gitmoji-changelog-action
 name: "Generate Gitmoji Changelog"
 
+on: [push]
+
 jobs:
     generate-changelog:
         runs-on: ubuntu-latest
