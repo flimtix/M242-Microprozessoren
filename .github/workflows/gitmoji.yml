@@ -1,0 +1,25 @@
+# Docs: https://docs.gitmoji-changelog.dev/
+# Action: https://github.com/sercanuste/gitmoji-changelog-action
+name: 'Generate Gitmoji Changelog'
+
+on:
+    push:
+        branches:
+            - 'main'
+
+jobs:
+    generate-changelog:
+        runs-on: ubuntu-latest
+        if: github.actor == '!*[bot]'
+        steps:
+            - name: 'Checkout'
+              uses: 'actions/checkout@v3'
+              with:
+                  fetch-depth: 0 # Required for fetch all history
+
+            - name: 'Generate Changelog'
+              uses: sercanuste/gitmoji-changelog-action@v1
+              with:
+                  commit_message: '📝: Update changelog'
+                  preset: generic
+                  author_name: '👷 Gitmoji Changelog[bot]'
