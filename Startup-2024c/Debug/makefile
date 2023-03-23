@@ -64,8 +64,8 @@ all: main-build
 main-build: Startup-2024c.elf secondary-outputs
 
 # Tool invocations
-Startup-2024c.elf Startup-2024c.map: $(OBJS) $(USER_OBJS) D:\Schule\Module\M246\Startup-2024c\STM32F303RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Startup-2024c.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Schule\Module\M246\Startup-2024c\STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Startup-2024c.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Startup-2024c.elf Startup-2024c.map: $(OBJS) $(USER_OBJS) D:\Entwicklung\Repos\21r8390\M242-Microprozessoren\Startup-2024c\STM32F303RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Startup-2024c.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Entwicklung\Repos\21r8390\M242-Microprozessoren\Startup-2024c\STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Startup-2024c.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
