@@ -2,7 +2,12 @@
 # Action: https://github.com/sercanuste/gitmoji-changelog-action
 name: "Generate Gitmoji Changelog"
 
-on: [push]
+on:
+    push:
+        branches:
+            - 'main'
+        paths-ignore:
+            - 'CHANGELOG.md'
 
 jobs:
     generate-changelog:
