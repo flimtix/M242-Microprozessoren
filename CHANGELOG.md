@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="1.1.0"></a>
-## 1.1.0 (2023-03-25)
+<a name="1.2.0"></a>
+## 1.2.0 (2023-03-25)
 
 ### Added
 
@@ -20,6 +20,7 @@
 ### Miscellaneous
 
 -  Update gitmoji.yml [[2b93729](https://github.com/21r8390/M242-Microprozessoren/commit/2b937296015086052dabc422ea7a01226a56ea9a)]
+- 📝 : Update changelog [[e8e6ff6](https://github.com/21r8390/M242-Microprozessoren/commit/e8e6ff66974b6ab621edc31ea607dd95961f7776)]
 - 🧱 : Update things [[d0d9cf6](https://github.com/21r8390/M242-Microprozessoren/commit/d0d9cf6f107d4b795cd5c41fa8249b0b81b2e82a)]
 - 🙈 : Added Debug &amp; .metadata to .gitignore [[e5aa5bd](https://github.com/21r8390/M242-Microprozessoren/commit/e5aa5bd96917d4abb8ffb419a4fb5b9b28b94487)]
 - 👔 : Add Taster_Treiber [[f3e3037](https://github.com/21r8390/M242-Microprozessoren/commit/f3e30379221c3d2658f268e1ff8a5dbe4cb7cb55)]
