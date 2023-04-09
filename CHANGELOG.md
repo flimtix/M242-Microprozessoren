@@ -19,7 +19,10 @@
 
 ### Miscellaneous
 
+-  Merge branch &#x27;main&#x27; of https://github.com/21r8390/M242-Microprozessoren [[06968cf](https://github.com/21r8390/M242-Microprozessoren/commit/06968cf8a78de5171aecb88019951221b90c1973)]
+-  .gitignore is now working [[5d06698](https://github.com/21r8390/M242-Microprozessoren/commit/5d066985fda964d87bba988bac777f8c104a7fe0)]
 - 💩 : .metadata changes [[937fcb2](https://github.com/21r8390/M242-Microprozessoren/commit/937fcb2c9e0467378f23954e23a6f65d0484c0be)]
+- 📝 : Update changelog [[46f9438](https://github.com/21r8390/M242-Microprozessoren/commit/46f9438478c30e1aea8b592dea05025f865ab73c)]
 -  Update gitmoji.yml [[2b93729](https://github.com/21r8390/M242-Microprozessoren/commit/2b937296015086052dabc422ea7a01226a56ea9a)]
 - 📝 : Update changelog [[9f15060](https://github.com/21r8390/M242-Microprozessoren/commit/9f15060c49b2161ce51fbafbafbafbfd5b6d3829)]
 - 📝 : Update changelog [[e8e6ff6](https://github.com/21r8390/M242-Microprozessoren/commit/e8e6ff66974b6ab621edc31ea607dd95961f7776)]
