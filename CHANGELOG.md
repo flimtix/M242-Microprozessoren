@@ -1,7 +1,7 @@
 # Changelog
 
 <a name="1.2.0"></a>
-## 1.2.0 (2023-03-25)
+## 1.2.0 (2023-04-09)
 
 ### Added
 
@@ -19,7 +19,9 @@
 
 ### Miscellaneous
 
+- 💩 : .metadata changes [[937fcb2](https://github.com/21r8390/M242-Microprozessoren/commit/937fcb2c9e0467378f23954e23a6f65d0484c0be)]
 -  Update gitmoji.yml [[2b93729](https://github.com/21r8390/M242-Microprozessoren/commit/2b937296015086052dabc422ea7a01226a56ea9a)]
+- 📝 : Update changelog [[9f15060](https://github.com/21r8390/M242-Microprozessoren/commit/9f15060c49b2161ce51fbafbafbafbfd5b6d3829)]
 - 📝 : Update changelog [[e8e6ff6](https://github.com/21r8390/M242-Microprozessoren/commit/e8e6ff66974b6ab621edc31ea607dd95961f7776)]
 - 🧱 : Update things [[d0d9cf6](https://github.com/21r8390/M242-Microprozessoren/commit/d0d9cf6f107d4b795cd5c41fa8249b0b81b2e82a)]
 - 🙈 : Added Debug &amp; .metadata to .gitignore [[e5aa5bd](https://github.com/21r8390/M242-Microprozessoren/commit/e5aa5bd96917d4abb8ffb419a4fb5b9b28b94487)]
