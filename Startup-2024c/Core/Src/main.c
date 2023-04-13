@@ -345,11 +345,7 @@ void StartDefaultTask(void *argument)
 void Taster_Treiber_Task(void *argument)
 {
   /* USER CODE BEGIN Taster_Treiber_Task */
-  /* Infinite loop */
-  for (;;)
-  {
-    osDelay(1);
-  }
+  Taster_Treiber_Init_Task(argument);
   /* USER CODE END Taster_Treiber_Task */
 }
 
