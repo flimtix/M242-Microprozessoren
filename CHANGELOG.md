@@ -15,11 +15,13 @@
 
 ### Fixed
 
+- 🐛 : Start the real Taster_Treiber [[425ae04](https://github.com/21r8390/M242-Microprozessoren/commit/425ae046b690d527adbbb04a9f1f76848db5bfc0)]
 - 💚 : Add on to gitmoji [[f59490a](https://github.com/21r8390/M242-Microprozessoren/commit/f59490a97addd1c218e578bb95f0ce6e55f1a63a)]
 - 💚 : Run gitmoji on commit [[3c9d564](https://github.com/21r8390/M242-Microprozessoren/commit/3c9d5641ff73c9b17c803e83fb7a6b21ebfaa633)]
 
 ### Miscellaneous
 
+- 📝 : Update changelog [[82937ef](https://github.com/21r8390/M242-Microprozessoren/commit/82937efc46407e4c0ea99c65671dea053b153ed0)]
 -  Merge branch &#x27;main&#x27; of https://github.com/21r8390/M242-Microprozessoren [[06968cf](https://github.com/21r8390/M242-Microprozessoren/commit/06968cf8a78de5171aecb88019951221b90c1973)]
 -  .gitignore is now working [[5d06698](https://github.com/21r8390/M242-Microprozessoren/commit/5d066985fda964d87bba988bac777f8c104a7fe0)]
 - 💩 : .metadata changes [[937fcb2](https://github.com/21r8390/M242-Microprozessoren/commit/937fcb2c9e0467378f23954e23a6f65d0484c0be)]
