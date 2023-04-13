@@ -68,6 +68,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 void StartDefaultTask(void *argument);
+void Taster_Treiber_Task(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -313,7 +314,6 @@ void StartDefaultTask(void *argument)
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
 
-  // Toggle LED_1
   while (1)
   {
     LED_Set(LED_1, Taster_Get(TASTER_1));
@@ -333,6 +333,24 @@ void StartDefaultTask(void *argument)
   }
 
   /* USER CODE END 5 */
+}
+
+/* USER CODE BEGIN Header_Taster_Treiber_Task */
+/**
+ * @brief Function implementing the tasterTask thread.
+ * @param argument: Not used
+ * @retval None
+ */
+/* USER CODE END Header_Taster_Treiber_Task */
+void Taster_Treiber_Task(void *argument)
+{
+  /* USER CODE BEGIN Taster_Treiber_Task */
+  /* Infinite loop */
+  for (;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END Taster_Treiber_Task */
 }
 
 /**

@@ -32,7 +32,7 @@ static bool TASTER_3_STATUS = false;
 //  ---------------------------------------
 
 // Reads the state of the given taster and saves it to the static variable
-void Taster_Treiber_Task(void *argument)
+void Taster_Treiber_Init_Task(void *argument)
 {
     // Invert the state because the taster is active low (on = 0, off = 1)
     while (true)

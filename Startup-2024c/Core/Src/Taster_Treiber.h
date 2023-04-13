@@ -39,7 +39,7 @@ PURPOSE:    Dieser Treiber liest die Taster des Mikrocontrollers aus.
 
 // Reads the state of the given taster and saves it to the static variable
 // This is a task that should be called by the scheduler
-void Taster_Treiber_Task(void *argument);
+void Taster_Treiber_Init_Task(void *argument);
 
 // Reads the current state of the given taster and returns it
 // Use the constants TASTER_1 to TASTER_3 to select the taster

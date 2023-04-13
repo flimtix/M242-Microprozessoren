@@ -19,7 +19,6 @@ PURPOSE:    Dieser Modul dient als Vorlage für neue Treiber.
 //  -----------------------------------------------
 //  3.     I N T E R N A L    D E F I N I T I O N S
 //  -----------------------------------------------
-static int counter;
 
 //  -------------------------------------------
 //  4.     I N T E R N A L    F U N C T I O N S
