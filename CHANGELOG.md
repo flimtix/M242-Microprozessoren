@@ -1,7 +1,7 @@
 # Changelog
 
 <a name="1.2.0"></a>
-## 1.2.0 (2023-04-09)
+## 1.2.0 (2023-04-13)
 
 ### Added
 
@@ -9,6 +9,7 @@
 
 ### Changed
 
+- 🚨 : Can compile [[54c842b](https://github.com/21r8390/M242-Microprozessoren/commit/54c842ba4eb246948e1b8bc7989527868a0db329)]
 - 🔧 : Prettier config [[850b329](https://github.com/21r8390/M242-Microprozessoren/commit/850b329bf64b34309e6aea9eacdadb9f762d0ff6)]
 - 🔧 : Add gitmoji config [[8e1e92a](https://github.com/21r8390/M242-Microprozessoren/commit/8e1e92a38e7587372bd7c4ef8cd1438e9674a474)]
 
@@ -22,6 +23,7 @@
 -  Merge branch &#x27;main&#x27; of https://github.com/21r8390/M242-Microprozessoren [[06968cf](https://github.com/21r8390/M242-Microprozessoren/commit/06968cf8a78de5171aecb88019951221b90c1973)]
 -  .gitignore is now working [[5d06698](https://github.com/21r8390/M242-Microprozessoren/commit/5d066985fda964d87bba988bac777f8c104a7fe0)]
 - 💩 : .metadata changes [[937fcb2](https://github.com/21r8390/M242-Microprozessoren/commit/937fcb2c9e0467378f23954e23a6f65d0484c0be)]
+- 📝 : Update changelog [[8831ca4](https://github.com/21r8390/M242-Microprozessoren/commit/8831ca4e2b3c3b47f92cc3875a64f12c61edfb60)]
 - 📝 : Update changelog [[46f9438](https://github.com/21r8390/M242-Microprozessoren/commit/46f9438478c30e1aea8b592dea05025f865ab73c)]
 -  Update gitmoji.yml [[2b93729](https://github.com/21r8390/M242-Microprozessoren/commit/2b937296015086052dabc422ea7a01226a56ea9a)]
 - 📝 : Update changelog [[9f15060](https://github.com/21r8390/M242-Microprozessoren/commit/9f15060c49b2161ce51fbafbafbafbfd5b6d3829)]
