@@ -1,7 +1,7 @@
 # Changelog
 
 <a name="1.2.0"></a>
-## 1.2.0 (2023-04-13)
+## 1.2.0 (2023-05-04)
 
 ### Added
 
@@ -21,6 +21,8 @@
 
 ### Miscellaneous
 
+- 📝 : Added documentation and snake [[b46130f](https://github.com/21r8390/M242-Microprozessoren/commit/b46130faac3af4eaa6aa14501557fb6263c09ef0)]
+- 📝 : Update changelog [[5847b41](https://github.com/21r8390/M242-Microprozessoren/commit/5847b41e8c21254be38fb0cbb8ee54532234d082)]
 - 📝 : Update changelog [[82937ef](https://github.com/21r8390/M242-Microprozessoren/commit/82937efc46407e4c0ea99c65671dea053b153ed0)]
 -  Merge branch &#x27;main&#x27; of https://github.com/21r8390/M242-Microprozessoren [[06968cf](https://github.com/21r8390/M242-Microprozessoren/commit/06968cf8a78de5171aecb88019951221b90c1973)]
 -  .gitignore is now working [[5d06698](https://github.com/21r8390/M242-Microprozessoren/commit/5d066985fda964d87bba988bac777f8c104a7fe0)]
