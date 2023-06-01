@@ -34,18 +34,25 @@ PURPOSE:    Dieser Treiber steuert die LEDs des Mikrocontrollers.
 //  3.     G L O B A L    C O N S T A N T S
 //  ---------------------------------------
 
+// Enum for the LEDs that can be used by the LED driver
+enum LED
+{
+    LED_1 = 0,
+    LED_2 = 1,
+    LED_3 = 2,
+    LED_4 = 3,
+};
+
 //  ---------------------------------------
 //  5.     G L O B A L    F U N C T I O N S
 //  ---------------------------------------
 
 // Changes the state of the LED to the opposite of its current state
-// Use the constants LED_1 to LED_4 to select the LED
-void LED_Toggle(int led);
+void LED_Toggle(LED led);
 
 // Sets the state of the LED to the given state
-// state = true: LED is on
-// state = false: LED is off
-// Use the constants LED_1 to LED_4 to select the LED
-void LED_Set(int led, bool state);
+// state = true: Turn the LED on
+// state = false: Turn the LED off
+void LED_Set(LED led, bool state);
 
 #endif

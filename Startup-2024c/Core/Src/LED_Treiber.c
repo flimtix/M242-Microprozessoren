@@ -29,7 +29,7 @@ PURPOSE:    Dieser Treiber steuert die LEDs des Mikrocontrollers.
 //  ---------------------------------------
 
 // Changes the state of the LED to the opposite of its current state
-void LED_Toggle(int led)
+void LED_Toggle(LED led)
 {
     switch (led)
     {
@@ -46,29 +46,32 @@ void LED_Toggle(int led)
         HAL_GPIO_TogglePin(LED_4_GPIO_Port, LED_4_Pin);
         break;
     default:
+        // This should never happen, because the enum LED is used as parameter
         break;
     }
 }
 
 // Sets the state of the LED to the given state
-void LED_Set(int led, bool state)
+void LED_Set(LED led, bool state)
 {
     // Invert the state because the LEDs are active low (on = 0, off = 1)
+    state = !state;
     switch (led)
     {
     case LED_1:
-        HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, !state);
+        HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, state);
         break;
     case LED_2:
-        HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, !state);
+        HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, state);
         break;
     case LED_3:
-        HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, !state);
+        HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, state);
         break;
     case LED_4:
-        HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, !state);
+        HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, state);
         break;
     default:
+        // This should never happen, because the enum LED is used as parameter
         break;
     }
 }
