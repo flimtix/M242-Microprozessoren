@@ -29,7 +29,7 @@ PURPOSE:    Dieser Treiber steuert die LEDs des Mikrocontrollers.
 //  ---------------------------------------
 
 // Changes the state of the LED to the opposite of its current state
-void LED_Toggle(LED led)
+void LED_Toggle(enum Led led)
 {
     switch (led)
     {
@@ -52,7 +52,7 @@ void LED_Toggle(LED led)
 }
 
 // Sets the state of the LED to the given state
-void LED_Set(LED led, bool state)
+void LED_Set(enum Led led, bool state)
 {
     // Invert the state because the LEDs are active low (on = 0, off = 1)
     state = !state;
