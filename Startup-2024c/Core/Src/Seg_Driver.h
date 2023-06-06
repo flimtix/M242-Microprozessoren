@@ -34,16 +34,15 @@
 #define SEG_Driver_FLASH_SLOW 1
 #define SEG_Driver_FLASH_FAST 2
 
-void SEG_Driver_Write(int value, int dp, int flash);
-
 // Anzeige-Wert schreiben  (negative Werte werden noch nicht unterst�tzt)
 // Die Anzeige wird gel�scht, sobald ein Wert gr�sser 9999 �bergeben wird
 
-//  int value   Wert von 0....9999  >9999 Anzeige = OFF
+//  int value   Wert von 0....9999  > 9999 Anzeige = OFF
 //  int dp		SEG_Driver_DP_OFF  ... SEG_Driver_DP_4              SEG_Driver_DP_1 | SEG_Driver_DP_2   es k�nnen mehrere angew�hlt werden
 //  int flash   SEG_Driver_FLASH_OFF  SEG_Driver_FLASH_FAST   SEG_DRIVER_FLAH_SLOW
+void SEG_Driver_Write(int value, int dp, int flash);
 
-void SEG_Driver_Task_5ms(void);
 // Dieser Task muss alle 5ms aufgerufen werden
+void SEG_Driver_Task_5ms(void);
 
 #endif /* SRC_SEG_DRIVER_H_ */

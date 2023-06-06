@@ -25,6 +25,7 @@
 
 #include "LED_Treiber.h"
 #include "Taster_Treiber.h"
+#include "Seg_Driver.h"
 
 /* USER CODE END Includes */
 
@@ -257,10 +258,16 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LED_1_Pin | LED_2_Pin | LED_3_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LED_1_Pin | LED_2_Pin | LED_3_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, OUT_7SEG_SFTCLK_Pin | OUT_7SEG_SDI_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(OUT_7SEGLCHCLK_GPIO_Port, OUT_7SEGLCHCLK_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -270,8 +277,8 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : TASTER_1_Pin TASTER_2_Pin */
   GPIO_InitStruct.Pin = TASTER_1_Pin | TASTER_2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LED_1_Pin LED_2_Pin LED_3_Pin */
@@ -283,9 +290,23 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : TASTER_3_Pin */
   GPIO_InitStruct.Pin = TASTER_3_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(TASTER_3_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : OUT_7SEG_SFTCLK_Pin OUT_7SEG_SDI_Pin */
+  GPIO_InitStruct.Pin = OUT_7SEG_SFTCLK_Pin | OUT_7SEG_SDI_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : OUT_7SEGLCHCLK_Pin */
+  GPIO_InitStruct.Pin = OUT_7SEGLCHCLK_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(OUT_7SEGLCHCLK_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : LED_4_Pin */
   GPIO_InitStruct.Pin = LED_4_Pin;
@@ -293,6 +314,19 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LED_4_GPIO_Port, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI1_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI4_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI4_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
   /* USER CODE END MX_GPIO_Init_2 */
@@ -316,20 +350,8 @@ void StartDefaultTask(void *argument)
 
   while (1)
   {
-    LED_Set(LED_1, Taster_Get(TASTER_1));
-
-    if (Taster_Get(TASTER_3))
-    {
-      LED_Toggle(LED_3);
-    }
-    else
-    {
-      LED_Set(LED_3, false);
-    }
-
-    LED_Toggle(LED_2);
-
-    osDelay(100);
+    SEG_Driver_Task_5ms();
+    osDelay(5);
   }
 
   /* USER CODE END 5 */
@@ -345,6 +367,12 @@ void StartDefaultTask(void *argument)
 void Taster_Treiber_Task(void *argument)
 {
   /* USER CODE BEGIN Taster_Treiber_Task */
+  int test = 2;
+  while (1)
+  {
+    SEG_Driver_Write(test++, 10, 0);
+    osDelay(80);
+  }
   Taster_Treiber_Init_Task(argument);
   /* USER CODE END Taster_Treiber_Task */
 }
