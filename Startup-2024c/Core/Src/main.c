@@ -71,6 +71,10 @@ const osThreadAttr_t displayUpdate_attributes = {
 osSemaphoreId_t displaySemaphoreHandle;
 const osSemaphoreAttr_t displaySemaphore_attributes = {
     .name = "displaySemaphore"};
+/* Definitions for ledSemaphore */
+osSemaphoreId_t ledSemaphoreHandle;
+const osSemaphoreAttr_t ledSemaphore_attributes = {
+    .name = "ledSemaphore"};
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -136,8 +140,15 @@ int main(void)
   /* creation of displaySemaphore */
   displaySemaphoreHandle = osSemaphoreNew(1, 1, &displaySemaphore_attributes);
 
+  /* creation of ledSemaphore */
+  ledSemaphoreHandle = osSemaphoreNew(1, 1, &ledSemaphore_attributes);
+
   /* USER CODE BEGIN RTOS_SEMAPHORES */
-  /* add semaphores, ... */
+
+  // Save the semaphore handle to a global variable
+  ledSemaphoreHandleId = ledSemaphoreHandle;
+  displaySemaphoreHandleId = displaySemaphoreHandle;
+
   /* USER CODE END RTOS_SEMAPHORES */
 
   /* USER CODE BEGIN RTOS_TIMERS */
@@ -403,9 +414,6 @@ void Taster_Treiber_Task(void *argument)
 void DisplayUpdateTask(void *argument)
 {
   /* USER CODE BEGIN DisplayUpdateTask */
-
-  // Save the semaphore handle to a global variable
-  displaySemaphoreHandleId = displaySemaphoreHandle;
 
   // Initialize the display task
   Update_Display_Task();

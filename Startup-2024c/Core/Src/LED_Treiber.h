@@ -38,6 +38,9 @@ enum Led
 //  3.     G L O B A L    C O N S T A N T S
 //  ---------------------------------------
 
+// Semaphore controlling the access to the LEDs
+static osSemaphoreId_t ledSemaphoreHandleId;
+
 //  ---------------------------------------
 //  5.     G L O B A L    F U N C T I O N S
 //  ---------------------------------------

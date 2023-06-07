@@ -20,6 +20,9 @@ PURPOSE:    Dieser Treiber steuert die LEDs des Mikrocontrollers.
 //  3.     I N T E R N A L    D E F I N I T I O N S
 //  -----------------------------------------------
 
+// Timeout for the semaphore before it will throw an error
+#define SEMAPHORE_TIMEOUT 100
+
 //  -------------------------------------------
 //  4.     I N T E R N A L    F U N C T I O N S
 //  -------------------------------------------
@@ -31,6 +34,11 @@ PURPOSE:    Dieser Treiber steuert die LEDs des Mikrocontrollers.
 // Changes the state of the LED to the opposite of its current state
 void LED_Toggle(enum Led led)
 {
+    // Semaphore to prevent multiple tasks from updating the LEDs at the same time
+    // Wait for the semaphore to be released
+    osSemaphoreAcquire(ledSemaphoreHandleId, SEMAPHORE_TIMEOUT);
+
+    // Toggle the state of the LED
     switch (led)
     {
     case LED_1:
@@ -49,6 +57,9 @@ void LED_Toggle(enum Led led)
         // This should never happen, because the enum LED is used as parameter
         break;
     }
+
+    // Release the semaphore so other tasks can update the display
+    osSemaphoreRelease(ledSemaphoreHandleId);
 }
 
 // Sets the state of the LED to the given state
@@ -56,6 +67,12 @@ void LED_Set(enum Led led, bool state)
 {
     // Invert the state because the LEDs are active low (on = 0, off = 1)
     state = !state;
+
+    // Semaphore to prevent multiple tasks from updating the LEDs at the same time
+    // Wait for the semaphore to be released
+    osSemaphoreAcquire(ledSemaphoreHandleId, SEMAPHORE_TIMEOUT);
+
+    // Set the state of the LED
     switch (led)
     {
     case LED_1:
@@ -74,4 +91,7 @@ void LED_Set(enum Led led, bool state)
         // This should never happen, because the enum LED is used as parameter
         break;
     }
+
+    // Release the semaphore so other tasks can update the display
+    osSemaphoreRelease(ledSemaphoreHandleId);
 }
