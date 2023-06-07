@@ -25,7 +25,7 @@
 
 #include "LED_Treiber.h"
 #include "Taster_Treiber.h"
-#include "Seg_Driver.h"
+#include "Display_Treiber.h"
 
 /* USER CODE END Includes */
 
@@ -60,6 +60,17 @@ const osThreadAttr_t tasterTask_attributes = {
     .stack_size = 128 * 4,
     .priority = (osPriority_t)osPriorityLow,
 };
+/* Definitions for displayUpdate */
+osThreadId_t displayUpdateHandle;
+const osThreadAttr_t displayUpdate_attributes = {
+    .name = "displayUpdate",
+    .stack_size = 128 * 4,
+    .priority = (osPriority_t)osPriorityLow,
+};
+/* Definitions for displaySemaphore */
+osSemaphoreId_t displaySemaphoreHandle;
+const osSemaphoreAttr_t displaySemaphore_attributes = {
+    .name = "displaySemaphore"};
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -70,6 +81,7 @@ static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 void StartDefaultTask(void *argument);
 void Taster_Treiber_Task(void *argument);
+void DisplayUpdateTask(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -120,6 +132,10 @@ int main(void)
   /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
 
+  /* Create the semaphores(s) */
+  /* creation of displaySemaphore */
+  displaySemaphoreHandle = osSemaphoreNew(1, 1, &displaySemaphore_attributes);
+
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
@@ -138,6 +154,9 @@ int main(void)
 
   /* creation of tasterTask */
   tasterTaskHandle = osThreadNew(Taster_Treiber_Task, NULL, &tasterTask_attributes);
+
+  /* creation of displayUpdate */
+  displayUpdateHandle = osThreadNew(DisplayUpdateTask, NULL, &displayUpdate_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
 
@@ -350,7 +369,7 @@ void StartDefaultTask(void *argument)
 
   while (1)
   {
-    SEG_Driver_Task_5ms();
+    Display_Time(100);
     osDelay(5);
   }
 
@@ -367,14 +386,31 @@ void StartDefaultTask(void *argument)
 void Taster_Treiber_Task(void *argument)
 {
   /* USER CODE BEGIN Taster_Treiber_Task */
-  int test = 2;
-  while (1)
-  {
-    SEG_Driver_Write(test++, 10, 0);
-    osDelay(80);
-  }
+
+  // Initialize the taster task
   Taster_Treiber_Init_Task(argument);
+
   /* USER CODE END Taster_Treiber_Task */
+}
+
+/* USER CODE BEGIN Header_DisplayUpdateTask */
+/**
+ * @brief Function implementing the displayUpdate thread.
+ * @param argument: Not used
+ * @retval None
+ */
+/* USER CODE END Header_DisplayUpdateTask */
+void DisplayUpdateTask(void *argument)
+{
+  /* USER CODE BEGIN DisplayUpdateTask */
+
+  // Save the semaphore handle to a global variable
+  displaySemaphoreHandleId = displaySemaphoreHandle;
+
+  // Initialize the display task
+  Update_Display_Task();
+
+  /* USER CODE END DisplayUpdateTask */
 }
 
 /**
