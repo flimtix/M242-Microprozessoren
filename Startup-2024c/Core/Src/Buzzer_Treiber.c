@@ -53,7 +53,7 @@ void Buzzer_Beep(int length)
         osSemaphoreAcquire(buzzerSemaphoreHandleId, SEMAPHORE_TIMEOUT);
 
         // Make the buzzer beep
-        HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_SET);
+        HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, true);
 
         // Release the semaphore
         osSemaphoreRelease(buzzerSemaphoreHandleId);
@@ -72,7 +72,7 @@ void Buzzer_Beep(int length)
         osSemaphoreAcquire(buzzerSemaphoreHandleId, SEMAPHORE_TIMEOUT);
 
         // Turn off the buzzer
-        HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, true);
 
         // Release the semaphore
         osSemaphoreRelease(buzzerSemaphoreHandleId);
