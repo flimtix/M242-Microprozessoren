@@ -53,13 +53,6 @@ const osThreadAttr_t defaultTask_attributes = {
     .stack_size = 128 * 4,
     .priority = (osPriority_t)osPriorityNormal,
 };
-/* Definitions for tasterTask */
-osThreadId_t tasterTaskHandle;
-const osThreadAttr_t tasterTask_attributes = {
-    .name = "tasterTask",
-    .stack_size = 128 * 4,
-    .priority = (osPriority_t)osPriorityLow,
-};
 /* Definitions for displayUpdate */
 osThreadId_t displayUpdateHandle;
 const osThreadAttr_t displayUpdate_attributes = {
@@ -75,6 +68,10 @@ const osSemaphoreAttr_t displaySemaphore_attributes = {
 osSemaphoreId_t ledSemaphoreHandle;
 const osSemaphoreAttr_t ledSemaphore_attributes = {
     .name = "ledSemaphore"};
+/* Definitions for tasterSemaphore */
+osSemaphoreId_t tasterSemaphoreHandle;
+const osSemaphoreAttr_t tasterSemaphore_attributes = {
+    .name = "tasterSemaphore"};
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -84,7 +81,6 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 void StartDefaultTask(void *argument);
-void Taster_Treiber_Task(void *argument);
 void DisplayUpdateTask(void *argument);
 
 /* USER CODE BEGIN PFP */
@@ -143,11 +139,15 @@ int main(void)
   /* creation of ledSemaphore */
   ledSemaphoreHandle = osSemaphoreNew(1, 1, &ledSemaphore_attributes);
 
+  /* creation of tasterSemaphore */
+  tasterSemaphoreHandle = osSemaphoreNew(1, 1, &tasterSemaphore_attributes);
+
   /* USER CODE BEGIN RTOS_SEMAPHORES */
 
-  // Save the semaphore handle to a global variable
+  // Save the semaphore handles to a global variable
   ledSemaphoreHandleId = ledSemaphoreHandle;
   displaySemaphoreHandleId = displaySemaphoreHandle;
+  tasterSemaphoreHandleId = tasterSemaphoreHandle;
 
   /* USER CODE END RTOS_SEMAPHORES */
 
@@ -162,9 +162,6 @@ int main(void)
   /* Create the thread(s) */
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
-
-  /* creation of tasterTask */
-  tasterTaskHandle = osThreadNew(Taster_Treiber_Task, NULL, &tasterTask_attributes);
 
   /* creation of displayUpdate */
   displayUpdateHandle = osThreadNew(DisplayUpdateTask, NULL, &displayUpdate_attributes);
@@ -385,23 +382,6 @@ void StartDefaultTask(void *argument)
   }
 
   /* USER CODE END 5 */
-}
-
-/* USER CODE BEGIN Header_Taster_Treiber_Task */
-/**
- * @brief Function implementing the tasterTask thread.
- * @param argument: Not used
- * @retval None
- */
-/* USER CODE END Header_Taster_Treiber_Task */
-void Taster_Treiber_Task(void *argument)
-{
-  /* USER CODE BEGIN Taster_Treiber_Task */
-
-  // Initialize the taster task
-  Taster_Treiber_Init_Task(argument);
-
-  /* USER CODE END Taster_Treiber_Task */
 }
 
 /* USER CODE BEGIN Header_DisplayUpdateTask */

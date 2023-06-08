@@ -1,20 +1,20 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file    stm32f3xx_it.c
-  * @brief   Interrupt Service Routines.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2023 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file    stm32f3xx_it.c
+ * @brief   Interrupt Service Routines.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2023 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
@@ -22,6 +22,9 @@
 #include "stm32f3xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
+#include "Taster_Treiber.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -170,6 +173,9 @@ void EXTI0_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(TASTER_3_Pin);
   /* USER CODE BEGIN EXTI0_IRQn 1 */
 
+  // Inform the Taster_Treiber that the taster has been pressed
+  Taster_Pressed(Taster_3);
+
   /* USER CODE END EXTI0_IRQn 1 */
 }
 
@@ -184,6 +190,9 @@ void EXTI1_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(TASTER_1_Pin);
   /* USER CODE BEGIN EXTI1_IRQn 1 */
 
+  // Inform the Taster_Treiber that the taster has been pressed
+  Taster_Pressed(Taster_1);
+
   /* USER CODE END EXTI1_IRQn 1 */
 }
 
@@ -197,6 +206,9 @@ void EXTI4_IRQHandler(void)
   /* USER CODE END EXTI4_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(TASTER_2_Pin);
   /* USER CODE BEGIN EXTI4_IRQn 1 */
+
+  // Inform the Taster_Treiber that the taster has been pressed
+  Taster_Pressed(Taster_2);
 
   /* USER CODE END EXTI4_IRQn 1 */
 }
