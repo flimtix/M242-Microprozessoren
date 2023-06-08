@@ -31,6 +31,7 @@
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
+typedef StaticSemaphore_t osStaticSemaphoreDef_t;
 /* USER CODE BEGIN PTD */
 
 /* USER CODE END PTD */
@@ -63,18 +64,27 @@ const osThreadAttr_t displayUpdate_attributes = {
 };
 /* Definitions for displaySemaphore */
 osSemaphoreId_t displaySemaphoreHandle;
+osStaticSemaphoreDef_t displaySemaphoreControlBlock;
 const osSemaphoreAttr_t displaySemaphore_attributes = {
-  .name = "displaySemaphore"
+  .name = "displaySemaphore",
+  .cb_mem = &displaySemaphoreControlBlock,
+  .cb_size = sizeof(displaySemaphoreControlBlock),
 };
 /* Definitions for ledSemaphore */
 osSemaphoreId_t ledSemaphoreHandle;
+osStaticSemaphoreDef_t ledSemaphoreControlBlock;
 const osSemaphoreAttr_t ledSemaphore_attributes = {
-  .name = "ledSemaphore"
+  .name = "ledSemaphore",
+  .cb_mem = &ledSemaphoreControlBlock,
+  .cb_size = sizeof(ledSemaphoreControlBlock),
 };
 /* Definitions for buzzerSemaphore */
 osSemaphoreId_t buzzerSemaphoreHandle;
+osStaticSemaphoreDef_t buzzerSemaphoreControlBlock;
 const osSemaphoreAttr_t buzzerSemaphore_attributes = {
-  .name = "buzzerSemaphore"
+  .name = "buzzerSemaphore",
+  .cb_mem = &buzzerSemaphoreControlBlock,
+  .cb_size = sizeof(buzzerSemaphoreControlBlock),
 };
 /* USER CODE BEGIN PV */
 

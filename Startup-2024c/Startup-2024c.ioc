@@ -2,7 +2,7 @@
 CAD.formats=
 CAD.pinconfig=
 CAD.provider=
-FREERTOS.BinarySemaphores01=displaySemaphore,Dynamic,NULL;ledSemaphore,Dynamic,NULL;buzzerSemaphore,Dynamic,NULL
+FREERTOS.BinarySemaphores01=displaySemaphore,Static,displaySemaphoreControlBlock;ledSemaphore,Static,ledSemaphoreControlBlock;buzzerSemaphore,Static,buzzerSemaphoreControlBlock
 FREERTOS.FootprintOK=true
 FREERTOS.IPParameters=Tasks01,configUSE_NEWLIB_REENTRANT,FootprintOK,BinarySemaphores01
 FREERTOS.Tasks01=defaultTask,24,128,StartDefaultTask,Default,NULL,Dynamic,NULL,NULL;displayUpdate,8,128,DisplayUpdateTask,Default,NULL,Dynamic,NULL,NULL
