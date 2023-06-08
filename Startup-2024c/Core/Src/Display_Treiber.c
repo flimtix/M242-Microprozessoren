@@ -23,7 +23,7 @@ PURPOSE:    Dieser Modul dient als Vorlage für neue Treiber.
 // Timeout for the semaphore before it will throw an error
 #define SEMAPHORE_TIMEOUT 100
 
-// All segments of the display combined
+// Where to display the dots
 #define UPDATE_ALL_SEGMENTS SEG_Driver_DP_1 | SEG_Driver_DP_2 | SEG_Driver_DP_3 | SEG_Driver_DP_4
 
 //  -------------------------------------------
@@ -81,12 +81,14 @@ void Update_Display_Task()
 // Updates the time of the display
 void Display_Time(int time)
 {
+    // Write the time to the display without flashing
     Write_Time_To_Display(time, SEG_Driver_FLASH_OFF);
 }
 
 // Updates the time of the display with a flashing effect
 void Display_Flash_Time(int time, enum DisplayFlashSpeed flashSpeed)
 {
+    // Convert the flash speed to the format of the SEG_Driver
     int flash;
     switch (flashSpeed)
     {
@@ -101,5 +103,6 @@ void Display_Flash_Time(int time, enum DisplayFlashSpeed flashSpeed)
         break;
     }
 
+    // Write the time to the display
     Write_Time_To_Display(time, flash);
 }
