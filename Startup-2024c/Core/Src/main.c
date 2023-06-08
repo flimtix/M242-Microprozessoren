@@ -26,6 +26,7 @@
 #include "LED_Treiber.h"
 #include "Taster_Treiber.h"
 #include "Display_Treiber.h"
+#include "Buzzer_Treiber.h"
 
 /* USER CODE END Includes */
 
@@ -49,29 +50,37 @@ UART_HandleTypeDef huart2;
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
-    .name = "defaultTask",
-    .stack_size = 128 * 4,
-    .priority = (osPriority_t)osPriorityNormal,
+  .name = "defaultTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for displayUpdate */
 osThreadId_t displayUpdateHandle;
 const osThreadAttr_t displayUpdate_attributes = {
-    .name = "displayUpdate",
-    .stack_size = 128 * 4,
-    .priority = (osPriority_t)osPriorityLow,
+  .name = "displayUpdate",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
 };
 /* Definitions for displaySemaphore */
 osSemaphoreId_t displaySemaphoreHandle;
 const osSemaphoreAttr_t displaySemaphore_attributes = {
-    .name = "displaySemaphore"};
+  .name = "displaySemaphore"
+};
 /* Definitions for ledSemaphore */
 osSemaphoreId_t ledSemaphoreHandle;
 const osSemaphoreAttr_t ledSemaphore_attributes = {
-    .name = "ledSemaphore"};
+  .name = "ledSemaphore"
+};
 /* Definitions for tasterSemaphore */
 osSemaphoreId_t tasterSemaphoreHandle;
 const osSemaphoreAttr_t tasterSemaphore_attributes = {
-    .name = "tasterSemaphore"};
+  .name = "tasterSemaphore"
+};
+/* Definitions for buzzerSemaphore */
+osSemaphoreId_t buzzerSemaphoreHandle;
+const osSemaphoreAttr_t buzzerSemaphore_attributes = {
+  .name = "buzzerSemaphore"
+};
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -93,9 +102,9 @@ void DisplayUpdateTask(void *argument);
 /* USER CODE END 0 */
 
 /**
- * @brief  The application entry point.
- * @retval int
- */
+  * @brief  The application entry point.
+  * @retval int
+  */
 int main(void)
 {
   /* USER CODE BEGIN 1 */
@@ -142,12 +151,16 @@ int main(void)
   /* creation of tasterSemaphore */
   tasterSemaphoreHandle = osSemaphoreNew(1, 1, &tasterSemaphore_attributes);
 
+  /* creation of buzzerSemaphore */
+  buzzerSemaphoreHandle = osSemaphoreNew(1, 1, &buzzerSemaphore_attributes);
+
   /* USER CODE BEGIN RTOS_SEMAPHORES */
 
   // Save the semaphore handles to a global variable
   ledSemaphoreHandleId = ledSemaphoreHandle;
   displaySemaphoreHandleId = displaySemaphoreHandle;
   tasterSemaphoreHandleId = tasterSemaphoreHandle;
+  buzzerSemaphoreHandleId = buzzerSemaphoreHandle;
 
   /* USER CODE END RTOS_SEMAPHORES */
 
@@ -189,9 +202,9 @@ int main(void)
 }
 
 /**
- * @brief System Clock Configuration
- * @retval None
- */
+  * @brief System Clock Configuration
+  * @retval None
+  */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
@@ -199,8 +212,8 @@ void SystemClock_Config(void)
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   /** Initializes the RCC Oscillators according to the specified parameters
-   * in the RCC_OscInitTypeDef structure.
-   */
+  * in the RCC_OscInitTypeDef structure.
+  */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
@@ -214,8 +227,9 @@ void SystemClock_Config(void)
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-   */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
@@ -234,10 +248,10 @@ void SystemClock_Config(void)
 }
 
 /**
- * @brief USART2 Initialization Function
- * @param None
- * @retval None
- */
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_USART2_UART_Init(void)
 {
 
@@ -265,18 +279,19 @@ static void MX_USART2_UART_Init(void)
   /* USER CODE BEGIN USART2_Init 2 */
 
   /* USER CODE END USART2_Init 2 */
+
 }
 
 /**
- * @brief GPIO Initialization Function
- * @param None
- * @retval None
- */
+  * @brief GPIO Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-  /* USER CODE BEGIN MX_GPIO_Init_1 */
-  /* USER CODE END MX_GPIO_Init_1 */
+/* USER CODE BEGIN MX_GPIO_Init_1 */
+/* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
@@ -285,16 +300,16 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LED_1_Pin | LED_2_Pin | LED_3_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOA, LED_1_Pin|LED_2_Pin|LED_3_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, OUT_7SEG_SFTCLK_Pin | OUT_7SEG_SDI_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, OUT_7SEG_SFTCLK_Pin|OUT_7SEG_SDI_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, BUZZER_Pin|LED_4_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(OUT_7SEGLCHCLK_GPIO_Port, OUT_7SEGLCHCLK_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -303,13 +318,13 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : TASTER_1_Pin TASTER_2_Pin */
-  GPIO_InitStruct.Pin = TASTER_1_Pin | TASTER_2_Pin;
+  GPIO_InitStruct.Pin = TASTER_1_Pin|TASTER_2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LED_1_Pin LED_2_Pin LED_3_Pin */
-  GPIO_InitStruct.Pin = LED_1_Pin | LED_2_Pin | LED_3_Pin;
+  GPIO_InitStruct.Pin = LED_1_Pin|LED_2_Pin|LED_3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -322,11 +337,18 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(TASTER_3_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : OUT_7SEG_SFTCLK_Pin OUT_7SEG_SDI_Pin */
-  GPIO_InitStruct.Pin = OUT_7SEG_SFTCLK_Pin | OUT_7SEG_SDI_Pin;
+  GPIO_InitStruct.Pin = OUT_7SEG_SFTCLK_Pin|OUT_7SEG_SDI_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : BUZZER_Pin LED_4_Pin */
+  GPIO_InitStruct.Pin = BUZZER_Pin|LED_4_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pin : OUT_7SEGLCHCLK_Pin */
   GPIO_InitStruct.Pin = OUT_7SEGLCHCLK_Pin;
@@ -334,13 +356,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(OUT_7SEGLCHCLK_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : LED_4_Pin */
-  GPIO_InitStruct.Pin = LED_4_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(LED_4_GPIO_Port, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI0_IRQn, 5, 0);
@@ -355,8 +370,8 @@ static void MX_GPIO_Init(void)
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
-  /* USER CODE BEGIN MX_GPIO_Init_2 */
-  /* USER CODE END MX_GPIO_Init_2 */
+/* USER CODE BEGIN MX_GPIO_Init_2 */
+/* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
@@ -402,20 +417,19 @@ void DisplayUpdateTask(void *argument)
 }
 
 /**
- * @brief  Period elapsed callback in non blocking mode
- * @note   This function is called  when TIM1 interrupt took place, inside
- * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
- * a global variable "uwTick" used as application time base.
- * @param  htim : TIM handle
- * @retval None
- */
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM1 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */
 
   /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM1)
-  {
+  if (htim->Instance == TIM1) {
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */
@@ -424,9 +438,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 }
 
 /**
- * @brief  This function is executed in case of error occurrence.
- * @retval None
- */
+  * @brief  This function is executed in case of error occurrence.
+  * @retval None
+  */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -438,14 +452,14 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef USE_FULL_ASSERT
+#ifdef  USE_FULL_ASSERT
 /**
- * @brief  Reports the name of the source file and the source line number
- *         where the assert_param error has occurred.
- * @param  file: pointer to the source file name
- * @param  line: assert_param error line source number
- * @retval None
- */
+  * @brief  Reports the name of the source file and the source line number
+  *         where the assert_param error has occurred.
+  * @param  file: pointer to the source file name
+  * @param  line: assert_param error line source number
+  * @retval None
+  */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
