@@ -71,11 +71,6 @@ osSemaphoreId_t ledSemaphoreHandle;
 const osSemaphoreAttr_t ledSemaphore_attributes = {
   .name = "ledSemaphore"
 };
-/* Definitions for tasterSemaphore */
-osSemaphoreId_t tasterSemaphoreHandle;
-const osSemaphoreAttr_t tasterSemaphore_attributes = {
-  .name = "tasterSemaphore"
-};
 /* Definitions for buzzerSemaphore */
 osSemaphoreId_t buzzerSemaphoreHandle;
 const osSemaphoreAttr_t buzzerSemaphore_attributes = {
@@ -148,9 +143,6 @@ int main(void)
   /* creation of ledSemaphore */
   ledSemaphoreHandle = osSemaphoreNew(1, 1, &ledSemaphore_attributes);
 
-  /* creation of tasterSemaphore */
-  tasterSemaphoreHandle = osSemaphoreNew(1, 1, &tasterSemaphore_attributes);
-
   /* creation of buzzerSemaphore */
   buzzerSemaphoreHandle = osSemaphoreNew(1, 1, &buzzerSemaphore_attributes);
 
@@ -159,7 +151,6 @@ int main(void)
   // Save the semaphore handles to a global variable
   ledSemaphoreHandleId = ledSemaphoreHandle;
   displaySemaphoreHandleId = displaySemaphoreHandle;
-  tasterSemaphoreHandleId = tasterSemaphoreHandle;
   buzzerSemaphoreHandleId = buzzerSemaphoreHandle;
 
   /* USER CODE END RTOS_SEMAPHORES */

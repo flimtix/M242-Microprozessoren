@@ -66,7 +66,7 @@ void Buzzer_Beep(int length)
     callCount--;
 
     // Only turn off the buzzer if it is the last call
-    if (callCount <= 1)
+    if (callCount == 0)
     {
         // Semaphore controlling the access to the buzzer
         osSemaphoreAcquire(buzzerSemaphoreHandleId, SEMAPHORE_TIMEOUT);

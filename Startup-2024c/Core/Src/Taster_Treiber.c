@@ -40,10 +40,6 @@ static void (*TASTER_3_CALLBACK)(bool) = NULL;
 // This function will trigger the callback function
 void Update_Taster(enum Taster taster)
 {
-    // Semaphore to prevent multiple tasks from updating the LEDs at the same time
-    // Wait for the semaphore to be released
-    osSemaphoreAcquire(tasterSemaphoreHandleId, SEMAPHORE_TIMEOUT);
-
     // Update the taster
     switch (taster)
     {
@@ -60,9 +56,6 @@ void Update_Taster(enum Taster taster)
         // This should never happen, because the enum Taster is used as parameter
         break;
     }
-
-    // Release the semaphore
-    osSemaphoreRelease(tasterSemaphoreHandleId);
 }
 
 // Calls the callback function for the given taster
