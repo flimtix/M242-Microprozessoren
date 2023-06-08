@@ -31,6 +31,7 @@
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
+typedef StaticTask_t osStaticThreadDef_t;
 typedef StaticSemaphore_t osStaticSemaphoreDef_t;
 /* USER CODE BEGIN PTD */
 
@@ -50,17 +51,27 @@ UART_HandleTypeDef huart2;
 
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
+uint32_t defaultTaskBuffer[ 128 ];
+osStaticThreadDef_t defaultTaskControlBlock;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .stack_size = 128 * 4,
+  .cb_mem = &defaultTaskControlBlock,
+  .cb_size = sizeof(defaultTaskControlBlock),
+  .stack_mem = &defaultTaskBuffer[0],
+  .stack_size = sizeof(defaultTaskBuffer),
   .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for displayUpdate */
 osThreadId_t displayUpdateHandle;
+uint32_t displayUpdateBuffer[ 128 ];
+osStaticThreadDef_t displayUpdateControlBlock;
 const osThreadAttr_t displayUpdate_attributes = {
   .name = "displayUpdate",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+  .cb_mem = &displayUpdateControlBlock,
+  .cb_size = sizeof(displayUpdateControlBlock),
+  .stack_mem = &displayUpdateBuffer[0],
+  .stack_size = sizeof(displayUpdateBuffer),
+  .priority = (osPriority_t) osPriorityLow2,
 };
 /* Definitions for displaySemaphore */
 osSemaphoreId_t displaySemaphoreHandle;
@@ -389,12 +400,15 @@ static void MX_GPIO_Init(void)
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
-  /* Infinite loop */
 
+  int time = 0;
   while (1)
   {
-    Display_Time(100);
-    osDelay(5);
+    Display_Time(time);
+    time += 100;
+    osDelay(100);
+
+    LED_Toggle(LED_1);
   }
 
   /* USER CODE END 5 */
