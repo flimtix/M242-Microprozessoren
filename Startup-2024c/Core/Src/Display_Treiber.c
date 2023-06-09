@@ -39,11 +39,35 @@ int Convert_Time_To_Display(int time)
         return 0;
     }
 
-    // TODO: Add a check if the time is too big for the display
-    // The display can only show 4 digits
+    // Convert the time to seconds
+    int timeInSeconds = time / 1000;
 
-    // TODO: Convert the time to the format of the display
-    return time;
+    // Extract the minutes, seconds, and tenths of seconds from the time
+    int minutes = timeInSeconds / 60;
+    int seconds = timeInSeconds % 60;
+    int tenthsOfSeconds = (time % 1000) / 100;
+
+    // Convert the minutes, seconds, and tenths of seconds to the format required by the display
+    int displayMinutes = minutes % 100;
+    int displaySeconds = seconds % 100;
+    int displayTenthsOfSeconds = tenthsOfSeconds % 10;
+
+    // Combine the minutes, seconds, and tenths of seconds into a single integer that can be displayed on the display
+    int displayTime = displayMinutes * 1000 + displaySeconds * 10 + displayTenthsOfSeconds;
+
+    // If the time is bigger than 9999, the display will show miliseconds instead of tenths of a second
+    if (displayTime > 9999)
+    {
+        displayTime = time % 10000;
+    }
+
+    // If the timer miliseconds are too big it only shows minutes
+    if (displayTime > 5999)
+    {
+        displayTime = minutes % 10000;
+    }
+
+    return displayTime;
 }
 
 // Writes the time to the SEG_Driver
@@ -68,7 +92,7 @@ void Write_Time_To_Display(int time, int flashSpeed)
 //  ---------------------------------------
 
 // Initializes the display and updates the display with the given value
-void Update_Display_Task()
+void DisplayUpdateTask(void *argument)
 {
     while (true)
     {

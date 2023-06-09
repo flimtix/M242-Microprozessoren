@@ -71,7 +71,7 @@ const osThreadAttr_t displayUpdate_attributes = {
   .cb_size = sizeof(displayUpdateControlBlock),
   .stack_mem = &displayUpdateBuffer[0],
   .stack_size = sizeof(displayUpdateBuffer),
-  .priority = (osPriority_t) osPriorityLow2,
+  .priority = (osPriority_t) osPriorityBelowNormal,
 };
 /* Definitions for displaySemaphore */
 osSemaphoreId_t displaySemaphoreHandle;
@@ -106,7 +106,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 void StartDefaultTask(void *argument);
-void DisplayUpdateTask(void *argument);
+extern void DisplayUpdateTask(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -412,23 +412,6 @@ void StartDefaultTask(void *argument)
   }
 
   /* USER CODE END 5 */
-}
-
-/* USER CODE BEGIN Header_DisplayUpdateTask */
-/**
- * @brief Function implementing the displayUpdate thread.
- * @param argument: Not used
- * @retval None
- */
-/* USER CODE END Header_DisplayUpdateTask */
-void DisplayUpdateTask(void *argument)
-{
-  /* USER CODE BEGIN DisplayUpdateTask */
-
-  // Initialize the display task
-  Update_Display_Task();
-
-  /* USER CODE END DisplayUpdateTask */
 }
 
 /**

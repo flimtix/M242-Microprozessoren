@@ -47,7 +47,7 @@ static osSemaphoreId_t displaySemaphoreHandleId;
 // Initializes the display and updates the display with the given value
 // This function should be called once at the beginning of the program
 // This will result in a infinite loop which will update the display
-void Update_Display_Task();
+void DisplayUpdateTask(void *argument);
 
 // Updates the time of the display
 // The time should be in ms
