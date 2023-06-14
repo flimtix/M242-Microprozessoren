@@ -1,7 +1,7 @@
 # Changelog
 
 <a name="1.2.0"></a>
-## 1.2.0 (2023-06-08)
+## 1.2.0 (2023-06-09)
 
 ### Added
 
@@ -12,6 +12,7 @@
 
 ### Changed
 
+- ⬆️ : STM now allows external tasks [[ff8f881](https://github.com/21r8390/M242-Microprozessoren/commit/ff8f881c9a03bd83b24464d1ecba08fd9dcf71f8)]
 - 🏗️ : Static Task &amp; display is low priority [[0072eb1](https://github.com/21r8390/M242-Microprozessoren/commit/0072eb11d3ef54cb40a8505f3644f800a802cb1e)]
 - 🏗️ : Use static semaphores [[3947301](https://github.com/21r8390/M242-Microprozessoren/commit/394730182689dfa608db164b26471d2b84408efd)]
 - 🏗️ : Taster driver with interrupts and callbacks [[77ef379](https://github.com/21r8390/M242-Microprozessoren/commit/77ef37959e215761981e13d9faac63f28e91b7ec)]
@@ -30,8 +31,10 @@
 
 ### Miscellaneous
 
+-  Merge branch &#x27;main&#x27; of https://github.com/21r8390/M242-Microprozessoren [[795bb4e](https://github.com/21r8390/M242-Microprozessoren/commit/795bb4ec40382ecbd61a99c991d9b1784fe0e5ca)]
 - 🍻 : Reading taster does not need a semaphore [[37dfe62](https://github.com/21r8390/M242-Microprozessoren/commit/37dfe620ecc956c1d9c5e332fcd4f183d8bbd3e5)]
 - 💡 : Added more comments to the display driver [[7b792ea](https://github.com/21r8390/M242-Microprozessoren/commit/7b792ea8181a7640c9f8564d920cf292e3d4abb4)]
+- 📝 : Update changelog [[e809605](https://github.com/21r8390/M242-Microprozessoren/commit/e8096051d913c425b48090e7316e89abf9aac962)]
 - 🧵 : LED driver extended by semaphore [[a5e614c](https://github.com/21r8390/M242-Microprozessoren/commit/a5e614ccce7603f7250cdcaec396cd93f4cdde74)]
 - 🍻 : Tests for Seg_Driver [[997cf7d](https://github.com/21r8390/M242-Microprozessoren/commit/997cf7d31c078f2d5efba3344c9e3043cbb9079e)]
 -  LED mit richtigem Enum [[9ee0e87](https://github.com/21r8390/M242-Microprozessoren/commit/9ee0e872fe7db5917821cd65bf5b5b70563cc17a)]
