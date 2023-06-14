@@ -23,6 +23,9 @@ PURPOSE:    Dieser Treiber steuert den Buzzer an.
 // Timeout for the semaphore before it will throw an error
 #define SEMAPHORE_TIMEOUT 100
 
+// Keep track of the number of calls to make sure the buzzer works with multiple calls
+static int callCount = 0;
+
 //  -------------------------------------------
 //  4.     I N T E R N A L    F U N C T I O N S
 //  -------------------------------------------
@@ -39,9 +42,6 @@ void Buzzer_Beep(int length)
     {
         return;
     }
-
-    // Keep track of the number of calls to make sure the buzzer works with multiple calls
-    static int callCount = 0;
 
     // Increase the call count
     callCount++;
@@ -66,8 +66,10 @@ void Buzzer_Beep(int length)
     callCount--;
 
     // Only turn off the buzzer if it is the last call
-    if (callCount == 0)
+    if (callCount <= 0)
     {
+        callCount = 0;
+
         // Semaphore controlling the access to the buzzer
         osSemaphoreAcquire(buzzerSemaphoreHandleId, SEMAPHORE_TIMEOUT);
 
