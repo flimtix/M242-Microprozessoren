@@ -21,6 +21,9 @@ PURPOSE:    Dieser Treiber liest die Taster des Mikrocontrollers aus.
 #include "cmsis_os.h"
 #include <stdbool.h>
 
+// On every function call the buzzer will beep
+#include "Buzzer_Treiber.h"
+
 //  -------------------------------------------
 //  2.     G L O B A L    D E F I N I T I O N S
 //  -------------------------------------------
@@ -43,15 +46,17 @@ enum Taster
 
 // Sets the callback function for the given taster
 // Pass a NULL pointer to remove the callback
-// Pass a pointer to a function with the following signature: void FuncName(bool pressed)
-void Set_Taster_Callback(enum Taster taster, void (*callback)(bool));
+void Set_Taster_Callback(enum Taster taster, void (*callback)(void));
 
-// Reads the current state of the given taster and returns it
-// This will not trigger the callback function
-// This will result in an hardware access and should not be used in time critical code
-bool Taster_Get(enum Taster taster);
+// Sets the callback function if the given taster is pressed long
+// Pass a NULL pointer to remove the callback
+void Set_Taster_Long_Callback(enum Taster taster, void (*callback)(void));
 
-// Informs the Taster_Treiber that the given taster has been pressed
+// Informs the Taster_Treiber that the given taster has been pressed or released
+// This function will trigger the callback functions
 void Taster_Pressed(enum Taster taster);
+
+// Reads the current state of the given taster and returns it from the stored value
+bool Taster_Get(enum Taster taster);
 
 #endif
