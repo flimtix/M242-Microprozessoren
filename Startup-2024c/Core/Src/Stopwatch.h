@@ -51,9 +51,6 @@ void ResetStopwatch();
 // The time will continue to run in the background
 void ShowIntermediateTime();
 
-// Hides the intermediate time
-void HideIntermediateTime();
-
 // Returns either the current time or the intermediate time
 // The time is in tenths of a second
 unsigned int GetStopwatchTime();

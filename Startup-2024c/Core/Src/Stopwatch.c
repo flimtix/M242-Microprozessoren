@@ -58,23 +58,30 @@ void StopwatchTask(void *argument)
 // Starts the stopwatch
 void StartStopwatch()
 {
+    isShowingIntermediateTime = false;
     isStopwatchRunning = true;
 }
 
 // Stops the stopwatch
 void StopStopwatch()
 {
+    isShowingIntermediateTime = false;
     isStopwatchRunning = false;
 }
 
 // Resets the stopwatch
 void ResetStopwatch()
 {
-    isStopwatchRunning = false;
-    isShowingIntermediateTime = false;
+    // Only reset the stopwatch if it is not running
+    if (!IsStopwatchRunning())
+    {
+        // Reset the stopwatch
+        isStopwatchRunning = false;
+        isShowingIntermediateTime = false;
 
-    currentTime = 0;
-    intermediateTime = 0;
+        currentTime = 0;
+        intermediateTime = 0;
+    }
 }
 
 // Shows the intermediate time
@@ -82,12 +89,6 @@ void ShowIntermediateTime()
 {
     intermediateTime = currentTime;
     isShowingIntermediateTime = true;
-}
-
-// Hides the intermediate time
-void HideIntermediateTime()
-{
-    isShowingIntermediateTime = false;
 }
 
 // Returns either the current time or the intermediate time
