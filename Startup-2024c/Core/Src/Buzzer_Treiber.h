@@ -10,8 +10,8 @@ PURPOSE:    Dieser Treiber steuert den Buzzer an.
 
 ------------------------------------------------------------------------*/
 
-#ifndef _NewTemplate
-#define _NewTemplate
+#ifndef _BUZZER_TREIBER
+#define _BUZZER_TREIBER
 
 //  -------------------------------------------------
 //  1. I N C L U D E S
@@ -25,8 +25,8 @@ PURPOSE:    Dieser Treiber steuert den Buzzer an.
 //  2.     G L O B A L    D E F I N I T I O N S
 //  -------------------------------------------
 
-// Semaphore controlling the access to the LEDs
-static osSemaphoreId_t buzzerSemaphoreHandleId;
+// Semaphore controlling the access to the buzzer
+extern osSemaphoreId_t buzzerSemaphoreHandleId;
 
 //  ---------------------------------------
 //  3.     G L O B A L    C O N S T A N T S

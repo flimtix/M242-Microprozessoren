@@ -20,6 +20,9 @@ PURPOSE:    Dieser Treiber steuert den Buzzer an.
 //  3.     I N T E R N A L    D E F I N I T I O N S
 //  -----------------------------------------------
 
+// Semaphore controlling the access to the buzzer
+osSemaphoreId_t buzzerSemaphoreHandleId;
+
 // Timeout for the semaphore before it will throw an error
 #define SEMAPHORE_TIMEOUT 100
 
@@ -52,8 +55,8 @@ void Buzzer_Beep(int length)
         // Semaphore controlling the access to the buzzer
         osSemaphoreAcquire(buzzerSemaphoreHandleId, SEMAPHORE_TIMEOUT);
 
-        // Make the buzzer beep
-        HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, true);
+        // Make the buzzer beep (false = the buzzer is on)
+        HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, false);
 
         // Release the semaphore
         osSemaphoreRelease(buzzerSemaphoreHandleId);
@@ -68,12 +71,13 @@ void Buzzer_Beep(int length)
     // Only turn off the buzzer if it is the last call
     if (callCount <= 0)
     {
+        // Reset the call counter
         callCount = 0;
 
         // Semaphore controlling the access to the buzzer
         osSemaphoreAcquire(buzzerSemaphoreHandleId, SEMAPHORE_TIMEOUT);
 
-        // Turn off the buzzer
+        // Turn off the buzzer (true = the buzzer is off)
         HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, true);
 
         // Release the semaphore
