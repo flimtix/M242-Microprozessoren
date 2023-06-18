@@ -23,6 +23,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+// The StateEvent library contains all the includes we need
+#include "StateEvent.h"
+
 // Event-Steuerung
 #include "Stopwatch.h"
 #include "Timer.h"
@@ -65,7 +68,7 @@ const osThreadAttr_t defaultTask_attributes = {
   .cb_size = sizeof(defaultTaskControlBlock),
   .stack_mem = &defaultTaskBuffer[0],
   .stack_size = sizeof(defaultTaskBuffer),
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityLow,
 };
 /* Definitions for displayUpdate */
 osThreadId_t displayUpdateHandle;
@@ -77,7 +80,7 @@ const osThreadAttr_t displayUpdate_attributes = {
   .cb_size = sizeof(displayUpdateControlBlock),
   .stack_mem = &displayUpdateBuffer[0],
   .stack_size = sizeof(displayUpdateBuffer),
-  .priority = (osPriority_t) osPriorityBelowNormal,
+  .priority = (osPriority_t) osPriorityHigh,
 };
 /* Definitions for stopwatch */
 osThreadId_t stopwatchHandle;
@@ -89,7 +92,7 @@ const osThreadAttr_t stopwatch_attributes = {
   .cb_size = sizeof(stopwatchControlBlock),
   .stack_mem = &stopwatchBuffer[0],
   .stack_size = sizeof(stopwatchBuffer),
-  .priority = (osPriority_t) osPriorityNormal1,
+  .priority = (osPriority_t) osPriorityBelowNormal1,
 };
 /* Definitions for timer */
 osThreadId_t timerHandle;
@@ -101,7 +104,19 @@ const osThreadAttr_t timer_attributes = {
   .cb_size = sizeof(timerTaskControlBlock),
   .stack_mem = &timerTaskBuffer[0],
   .stack_size = sizeof(timerTaskBuffer),
-  .priority = (osPriority_t) osPriorityNormal2,
+  .priority = (osPriority_t) osPriorityBelowNormal2,
+};
+/* Definitions for stateEvent */
+osThreadId_t stateEventHandle;
+uint32_t stateEventBuffer[ 128 ];
+osStaticThreadDef_t stateEventControlBlock;
+const osThreadAttr_t stateEvent_attributes = {
+  .name = "stateEvent",
+  .cb_mem = &stateEventControlBlock,
+  .cb_size = sizeof(stateEventControlBlock),
+  .stack_mem = &stateEventBuffer[0],
+  .stack_size = sizeof(stateEventBuffer),
+  .priority = (osPriority_t) osPriorityNormal1,
 };
 /* Definitions for displaySemaphore */
 osSemaphoreId_t displaySemaphoreHandle;
@@ -139,6 +154,7 @@ void StartDefaultTask(void *argument);
 extern void DisplayUpdateTask(void *argument);
 extern void StopwatchTask(void *argument);
 extern void TimerTask(void *argument);
+extern void StateEventTask(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -228,6 +244,9 @@ int main(void)
 
   /* creation of timer */
   timerHandle = osThreadNew(TimerTask, NULL, &timer_attributes);
+
+  /* creation of stateEvent */
+  stateEventHandle = osThreadNew(StateEventTask, NULL, &stateEvent_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
 
@@ -369,7 +388,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : TASTER_1_Pin TASTER_2_Pin */
   GPIO_InitStruct.Pin = TASTER_1_Pin|TASTER_2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
@@ -382,7 +401,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : TASTER_3_Pin */
   GPIO_InitStruct.Pin = TASTER_3_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(TASTER_3_GPIO_Port, &GPIO_InitStruct);
 
@@ -439,14 +458,9 @@ void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
 
-  int time = 0;
-  while (1)
+  while (true)
   {
-    Display_Time(time);
-    time += 100;
-    osDelay(100);
-
-    LED_Toggle(LED_1);
+    osDelay(1000);
   }
 
   /* USER CODE END 5 */
