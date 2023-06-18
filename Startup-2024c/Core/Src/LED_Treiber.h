@@ -25,6 +25,13 @@ PURPOSE:    Dieser Treiber steuert die LEDs des Mikrocontrollers.
 //  2.     G L O B A L    D E F I N I T I O N S
 //  -------------------------------------------
 
+// Semaphore controlling the access to the LEDs
+extern osSemaphoreId_t ledSemaphoreHandleId;
+
+//  ---------------------------------------
+//  3.     G L O B A L    C O N S T A N T S
+//  ---------------------------------------
+
 // Enum for the LEDs that can be used by the LED driver
 enum Led
 {
@@ -33,13 +40,6 @@ enum Led
     LED_3 = 2,
     LED_4 = 3,
 };
-
-//  ---------------------------------------
-//  3.     G L O B A L    C O N S T A N T S
-//  ---------------------------------------
-
-// Semaphore controlling the access to the LEDs
-static osSemaphoreId_t ledSemaphoreHandleId;
 
 //  ---------------------------------------
 //  5.     G L O B A L    F U N C T I O N S

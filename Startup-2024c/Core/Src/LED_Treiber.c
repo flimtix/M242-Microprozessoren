@@ -23,6 +23,9 @@ PURPOSE:    Dieser Treiber steuert die LEDs des Mikrocontrollers.
 // Timeout for the semaphore before it will throw an error
 #define SEMAPHORE_TIMEOUT 100
 
+// Semaphore controlling the access to the LEDs
+osSemaphoreId_t ledSemaphoreHandleId;
+
 //  -------------------------------------------
 //  4.     I N T E R N A L    F U N C T I O N S
 //  -------------------------------------------
