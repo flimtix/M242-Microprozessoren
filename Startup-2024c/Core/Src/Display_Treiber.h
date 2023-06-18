@@ -26,6 +26,9 @@ PURPOSE:    Dieser Treiber ist eine Abstraktion für den Seg_Driver um die Bedie
 //  2.     G L O B A L    D E F I N I T I O N S
 //  -------------------------------------------
 
+// Semaphore controlling the access to the display
+extern osSemaphoreId_t displaySemaphoreHandleId;
+
 //  ---------------------------------------
 //  3.     G L O B A L    C O N S T A N T S
 //  ---------------------------------------
@@ -36,9 +39,6 @@ enum DisplayFlashSpeed
     SLOW = 1,
     FAST = 2,
 };
-
-// Semaphore controlling the access to the display
-static osSemaphoreId_t displaySemaphoreHandleId;
 
 //  ---------------------------------------
 //  5.     G L O B A L    F U N C T I O N S
@@ -51,9 +51,9 @@ void DisplayUpdateTask(void *argument);
 
 // Updates the time of the display
 // The time should be in ms
-void Display_Time(int time);
+void Display_Time(unsigned int time);
 
 // Updates the time of the display with a flashing effect
-void Display_Flash_Time(int time, enum DisplayFlashSpeed flashSpeed);
+void Display_Flash_Time(unsigned int time, enum DisplayFlashSpeed flashSpeed);
 
 #endif

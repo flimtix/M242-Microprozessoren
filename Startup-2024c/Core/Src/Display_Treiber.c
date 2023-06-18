@@ -20,68 +20,74 @@ PURPOSE:    Dieser Modul dient als Vorlage für neue Treiber.
 //  3.     I N T E R N A L    D E F I N I T I O N S
 //  -----------------------------------------------
 
+// Semaphore controlling the access to the display
+osSemaphoreId_t displaySemaphoreHandleId;
+
 // Timeout for the semaphore before it will throw an error
 #define SEMAPHORE_TIMEOUT 100
 
 // Where to display the dots
-#define UPDATE_ALL_SEGMENTS SEG_Driver_DP_1 | SEG_Driver_DP_2 | SEG_Driver_DP_3 | SEG_Driver_DP_4
+// Time format: Minutes . Seconds . Tenths
+#define FORMAT_DECIMAL_POINT_M_S_F SEG_Driver_DP_2 | SEG_Driver_DP_4
+
+// Time format: Minutes : Seconds
+#define FORMAT_DECIMAL_POINT_M_S SEG_Driver_DP_3
 
 //  -------------------------------------------
 //  4.     I N T E R N A L    F U N C T I O N S
 //  -------------------------------------------
 
 // Converts the time to the format of the display
-int Convert_Time_To_Display(int time)
+// The display can only display 4 digits
+// The time is in tenths of a second
+int Convert_Time_To_Display(unsigned int tenths, int *decimalPoint)
 {
     // Negative time is not supported by the display
-    if (time <= 0)
+    if (tenths <= 0)
     {
+        *decimalPoint = SEG_Driver_DP_OFF;
         return 0;
     }
 
-    // Convert the time to seconds
-    int timeInSeconds = time / 1000;
+    int minutes = tenths / (10 * 60);   // Extract minutes
+    int seconds = (tenths / 10) % 60;   // Extract seconds
+    int tenths_of_second = tenths % 10; // Extract tenths of a second
 
-    // Extract the minutes, seconds, and tenths of seconds from the time
-    int minutes = timeInSeconds / 60;
-    int seconds = timeInSeconds % 60;
-    int tenthsOfSeconds = (time % 1000) / 100;
-
-    // Convert the minutes, seconds, and tenths of seconds to the format required by the display
-    int displayMinutes = minutes % 100;
-    int displaySeconds = seconds % 100;
-    int displayTenthsOfSeconds = tenthsOfSeconds % 10;
-
-    // Combine the minutes, seconds, and tenths of seconds into a single integer that can be displayed on the display
-    int displayTime = displayMinutes * 1000 + displaySeconds * 10 + displayTenthsOfSeconds;
-
-    // If the time is bigger than 9999, the display will show miliseconds instead of tenths of a second
-    if (displayTime > 9999)
+    // Determine the format based on the number of minutes
+    if (minutes < 10)
     {
-        displayTime = time % 10000;
+        // Format: M:SS:F
+        int displayValue = (minutes * 1000) + (seconds * 10) + tenths_of_second;
+        *decimalPoint = FORMAT_DECIMAL_POINT_M_S_F;
+        return displayValue;
     }
-
-    // If the timer miliseconds are too big it only shows minutes
-    if (displayTime > 5999)
+    else if (minutes < 100)
     {
-        displayTime = minutes % 10000;
+        // Format: MM:SS
+        int displayValue = (minutes * 100) + seconds;
+        *decimalPoint = FORMAT_DECIMAL_POINT_M_S;
+        return displayValue;
     }
-
-    return displayTime;
+    else
+    {
+        // Time is too big to display
+        return 9999;
+    }
 }
 
 // Writes the time to the SEG_Driver
-void Write_Time_To_Display(int time, int flashSpeed)
+void Write_Time_To_Display(unsigned int time, int flashSpeed)
 {
     // Convert the time to the format of the display
-    int displayTime = Convert_Time_To_Display(time);
+    int deciamelPoint = SEG_Driver_DP_OFF;
+    int displayTime = Convert_Time_To_Display(time, &deciamelPoint);
 
     // Semaphore to prevent the display from being updated by multiple tasks at the same time
     // Wait for the semaphore to be released
     osSemaphoreAcquire(displaySemaphoreHandleId, SEMAPHORE_TIMEOUT);
 
     // Write the time to the display
-    SEG_Driver_Write(displayTime, UPDATE_ALL_SEGMENTS, flashSpeed);
+    SEG_Driver_Write(displayTime, deciamelPoint, flashSpeed);
 
     // Release the semaphore so other tasks can update the display
     osSemaphoreRelease(displaySemaphoreHandleId);
@@ -103,14 +109,14 @@ void DisplayUpdateTask(void *argument)
 }
 
 // Updates the time of the display
-void Display_Time(int time)
+void Display_Time(unsigned int time)
 {
     // Write the time to the display without flashing
     Write_Time_To_Display(time, SEG_Driver_FLASH_OFF);
 }
 
 // Updates the time of the display with a flashing effect
-void Display_Flash_Time(int time, enum DisplayFlashSpeed flashSpeed)
+void Display_Flash_Time(unsigned int time, enum DisplayFlashSpeed flashSpeed)
 {
     // Convert the flash speed to the format of the SEG_Driver
     int flash;
