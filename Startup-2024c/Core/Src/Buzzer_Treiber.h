@@ -36,6 +36,10 @@ extern osSemaphoreId_t buzzerSemaphoreHandleId;
 //  5.     G L O B A L    F U N C T I O N S
 //  ---------------------------------------
 
+// Initializes the buzzer and updates the buzzer task
+// This task will control the state of buzzer in the background
+void BuzzerTask(void *argument);
+
 // Beep the buzzer for a given length in ms
 void Buzzer_Beep(int length);
 
