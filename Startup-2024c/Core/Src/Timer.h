@@ -37,6 +37,9 @@ PURPOSE:    Diese Datei ist für die Event-Steuerung des Timers zuständig.
 // This will create a task for the timer
 void TimerTask(void *argument);
 
+// Sets the callback function when the timer is up
+void SetTimerUpCallback(void (*callback)());
+
 // Increments the configured time
 void IncrementTime();
 
@@ -62,8 +65,8 @@ unsigned int GetTimerTime();
 // Returns true if the timer is running
 bool IsTimerRunning();
 
-// Returns true if the timer is paused
-bool IsTimerPaused();
+// Returns true if the timer is configuring
+bool IsConfiguringTimer();
 
 // Returns true if the time is up
 bool IsTimeUp();
