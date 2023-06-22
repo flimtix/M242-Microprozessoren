@@ -77,7 +77,7 @@ void SetTimerUpCallback(void (*callback)())
 void IncrementTime()
 {
     // Only increase the time if the timer is not running
-    if (!IsConfiguringTimer())
+    if (IsConfiguringTimer())
     {
         // Increase the time by one second
         currentTime += 10;
@@ -148,7 +148,7 @@ void ResetTimer()
     isTimerRunning = false;
 
     // Reset the pause
-    isConfiguringTimer = false;
+    isConfiguringTimer = true;
 
     // Reset the time up
     isTimeUp = false;

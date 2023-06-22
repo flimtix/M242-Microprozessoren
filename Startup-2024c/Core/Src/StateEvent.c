@@ -21,6 +21,8 @@ PURPOSE:    Dieses Modul stellt die Funktionen zur Verfuegung, um
 //  3.     I N T E R N A L    D E F I N I T I O N S
 //  -----------------------------------------------
 
+#define TIMER_INCREMENT_DELAY 150
+
 // The current running state
 static enum State currentState = STATE_STOPWATCH;
 
@@ -95,7 +97,7 @@ void Timer_EingerichteteZeitAnzeigen()
 
     Set_Taster_Callback(TASTER_1, &Timer_ZeitErhoehen);
     Set_Taster_Callback(TASTER_2, &Timer_ZeitVerringern);
-    Set_Taster_Callback(TASTER_3, NULL);
+    Set_Taster_Callback(TASTER_3, &Timer_AktuelleZeitAnzeigen);
 }
 
 void Timer_ZeitErhoehen()
@@ -104,8 +106,9 @@ void Timer_ZeitErhoehen()
     while (Taster_Get(TASTER_1))
     {
         IncrementTime();
-        // Die Zeit wird nur alle 50ms erhöht, damit die Zeit nicht zu schnell erhöht wird
-        osDelay(100);
+
+        // Die Zeit wird mit einem delay erhöht, damit die Zeit nicht zu schnell erhöht wird
+        osDelay(TIMER_INCREMENT_DELAY);
     }
 
     // Zurück zum vorherigen Status
@@ -118,8 +121,9 @@ void Timer_ZeitVerringern()
     while (Taster_Get(TASTER_2))
     {
         DecrementTime();
-        // Die Zeit wird nur alle 50ms verringert, damit die Zeit nicht zu schnell verringert wird
-        osDelay(100);
+
+        // Die Zeit wird mit einem delay verringert, damit die Zeit nicht zu schnell verringert wird
+        osDelay(TIMER_INCREMENT_DELAY);
     }
 
     // Zurück zum vorherigen Status
@@ -183,7 +187,7 @@ void ChangeState()
         }
         else
         {
-            Timer_Pausieren();
+            Stoppuhr_EndzeitAnzeigen();
         }
 
         currentState = STATE_TIMER;
