@@ -20,11 +20,9 @@ PURPOSE:    Dieser Treiber liest die Taster des Mikrocontrollers aus.
 //  3.     I N T E R N A L    D E F I N I T I O N S
 //  -----------------------------------------------
 
-// Amount of tasters that are in the enum Taster
-#define AMOUNT_OF_TASTER 3
-
 // Status of the tasters so that they can be read without accessing the hardware
 static bool TASTER_STATUS[AMOUNT_OF_TASTER] = {false, false, false};
+static bool TASTER_HAS_CHANGE[AMOUNT_OF_TASTER] = {false, false, false};
 
 // Callback functions for the tasters
 static void (*TASTER_CALLBACK[AMOUNT_OF_TASTER])() = {NULL, NULL, NULL};
@@ -37,7 +35,7 @@ static void (*TASTER_LONG_CALLBACK[AMOUNT_OF_TASTER])() = {NULL, NULL, NULL};
 //  -------------------------------------------
 
 // Updates the given taster with the current state
-bool Update_Taster(enum Taster taster)
+void Update_Taster(enum Taster taster)
 {
     // Read the status of the taster
     bool status = false;
@@ -58,12 +56,10 @@ bool Update_Taster(enum Taster taster)
     }
 
     // Save the status of the taster so that it can be read without accessing the hardware
-    // This is necessary because the interrupt will fire on press and release
-    // Invert the status because the taster is active low
+    // Set that the taster changed the state
     TASTER_STATUS[taster] = !status;
-
-    // Return the status of the taster
-    return TASTER_STATUS[taster];
+    // Invert the status because the taster is active low
+    TASTER_HAS_CHANGE[taster] = !status;
 }
 
 // Check if there is a callback for the taster
@@ -87,7 +83,8 @@ bool IsLongPress(enum Taster taster)
         // Find out if the taster is pressed longer than 2 sek
         int counter = 0;
 
-        // Wait for the taster to be released
+        // Wait for the taster to be released or 2 sek
+        // The taster will be released by an interrupt
         while (Taster_Get(taster))
         {
             // Update the counter
@@ -136,6 +133,31 @@ void Trigger_Callback(enum Taster taster)
 //  5.     G L O B A L    F U N C T I O N S
 //  ---------------------------------------
 
+// Initializes the taster treiber and triggers the callback function if a taster is pressed
+void TasterTask(void *argument)
+{
+    // Cycle through all tasters forever and check if they have changed
+    while (true)
+    {
+        // Cycle through all tasters
+        for (int i = 0; i < AMOUNT_OF_TASTER; i++)
+        {
+            // Check if the taster has changed
+            if (TASTER_HAS_CHANGE[i])
+            {
+                // Reset the change flag
+                TASTER_HAS_CHANGE[i] = false;
+
+                // Trigger the callback function
+                Trigger_Callback(i);
+            }
+        }
+
+        // Wait for 20ms
+        osDelay(20);
+    }
+}
+
 // Sets the callback function for the given taster
 void Set_Taster_Callback(enum Taster taster, void (*callback)(void))
 {
@@ -155,11 +177,7 @@ void Taster_Pressed(enum Taster taster)
 {
     // Update the taster status
     // Only trigger the callback and the buzzer if is was a pressing interrupt
-    if (Update_Taster(taster))
-    {
-        // Call the callback function to trigger the event
-        Trigger_Callback(taster);
-    }
+    Update_Taster(taster);
 }
 
 // Reads the current state of the given taster and returns it

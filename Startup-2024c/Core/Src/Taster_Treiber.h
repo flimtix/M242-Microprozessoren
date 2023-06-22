@@ -40,9 +40,15 @@ enum Taster
 //  3.     G L O B A L    C O N S T A N T S
 //  ---------------------------------------
 
+// Amount of tasters that are in the enum Taster
+#define AMOUNT_OF_TASTER 3
+
 //  ---------------------------------------
 //  5.     G L O B A L    F U N C T I O N S
 //  ---------------------------------------
+
+// Initializes the taster treiber and triggers the callback function if a taster is pressed
+void TasterTask(void *argument);
 
 // Sets the callback function for the given taster
 // Pass a NULL pointer to remove the callback
