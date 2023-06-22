@@ -1,0 +1,101 @@
+@startuml "M242 - Stoppuhr"
+hide empty description
+
+' LED & Buzzer über Kommentare darstellen
+' Stimmt Buzzer pausieren
+
+[*] --> Stoppuhr
+
+note "LED 4 blinkt immer im 2Hz interval" AS N1
+
+state Stoppuhr {
+    ' Eigenschaften
+    Stoppuhr : LED 1 leuchtet
+    Stoppuhr : LED 3 leuchtet, wenn Stoppuhr läuft
+    Stoppuhr : LED 3 blinkt, wenn Zwischenzeit aktiv
+
+    ' Events
+    [*] --> LeereZeitAnzeigen : Stoppuhr ist nicht gestartet
+    [*] --> SAktuelleZeitAnzeigen : Stoppuhr läuft
+
+    ' States
+    state LeereZeitAnzeigen as "Leere Zeit anzeigen"
+    LeereZeitAnzeigen : 00:00:00 wird angezeigt
+    
+    state SAktuelleZeitAnzeigen as "Aktuelle Zeit anzeigen"
+    SAktuelleZeitAnzeigen : Wenn 9:59:59 erreicht, werden Zehntelsekunden nicht mehr angezeigt
+
+    state ZwischenZeitAnzeigen as "Zwischenzeit anzeigen"
+    ZwischenZeitAnzeigen : Zeit beim Stopp wird angezeigt
+    ZwischenZeitAnzeigen : Zähler lauft im Hintergrund weiter
+    
+    state EndzeitAnzeigen as "Endzeit anzeigen"
+    EndzeitAnzeigen : Zeit beim Stopp wird angezeigt
+    EndzeitAnzeigen : Zähler wird angehalten
+
+    ' Events
+    SAktuelleZeitAnzeigen -> SAktuelleZeitAnzeigen : Zeit + 1/10 Sekunde
+        
+    LeereZeitAnzeigen -> SAktuelleZeitAnzeigen : Taster S1 drücken
+
+    SAktuelleZeitAnzeigen -> ZwischenZeitAnzeigen : Taster S3 drücken
+    ZwischenZeitAnzeigen -> SAktuelleZeitAnzeigen : Taster S3 drücken
+    ZwischenZeitAnzeigen --> EndzeitAnzeigen : Taster S2 drücken
+
+    SAktuelleZeitAnzeigen -> EndzeitAnzeigen : Taster S2 drücken
+    EndzeitAnzeigen -> SAktuelleZeitAnzeigen : Taster S1 drücken
+    EndzeitAnzeigen -> LeereZeitAnzeigen : Taster S3 drücken
+}
+
+state Timer {
+    ' Eigenschaften
+    Timer : LED 2 leuchtet
+
+    ' Events
+    [*] --> ConfigTimer : Timer läuft nicht
+    [*] --> RunningTimer : Timer läuft
+
+    state ConfigTimer as "Timer konfigurieren" {
+        ' States
+        state EingerichteteZeitAnzeigen as "Eingerichtete Zeit anzeigen"
+        state ZeitErhöhen as "Zeit erhöhen"
+        state ZeitVerringern as "Zeit verringern"
+
+        ' Events
+        [*] --> EingerichteteZeitAnzeigen
+       
+        EingerichteteZeitAnzeigen -> ZeitErhöhen : Taster S1 drücken
+        ZeitErhöhen -> EingerichteteZeitAnzeigen : Taster S1 loslassen
+        EingerichteteZeitAnzeigen -left-> ZeitVerringern : Taster S2 drücken
+        ZeitVerringern -> EingerichteteZeitAnzeigen : Taster S2 loslassen
+
+        EingerichteteZeitAnzeigen -> RunningTimer : Taster S3 drücken
+    }
+
+    state RunningTimer as "Timer läuft" {
+        ' States
+        state TAktuelleZeitAnzeigen as "Aktuelle Zeit anzeigen"
+        state TimerAbgelaufen as "Timer abgelaufen"
+        TimerAbgelaufen : Buzzer ertönt
+
+        state Pausieren as "Pausieren"
+        Pausieren : Buzzer ertönt pausieren / fortsetzen
+
+        ' Events
+        [*] --> TAktuelleZeitAnzeigen
+        TAktuelleZeitAnzeigen -> TAktuelleZeitAnzeigen : Zeit - 1/10 Sekunde
+
+        TAktuelleZeitAnzeigen --> Pausieren : Taster S1 drücken 
+        Pausieren -> TAktuelleZeitAnzeigen : Taster S2 drücken
+
+        TAktuelleZeitAnzeigen --> TimerAbgelaufen : Zeit abgelaufen
+        TimerAbgelaufen -> ConfigTimer : 3 Sekunden abgelaufen
+
+        TAktuelleZeitAnzeigen --> ConfigTimer : Taster S3 drücken
+    }
+}
+
+Stoppuhr -right-> Timer : Taster S3 lange drücken
+Timer -left-> Stoppuhr : Taster S3 lange drücken
+
+@enduml
