@@ -1,10 +1,13 @@
 # Changelog
 
 <a name="1.2.0"></a>
-## 1.2.0 (2023-06-09)
+## 1.2.0 (2023-06-22)
 
 ### Added
 
+- ✨ : StateEvent for controlling the state [[eb87567](https://github.com/21r8390/M242-Microprozessoren/commit/eb8756746f2e8301d531d11b5b7be840953d5841)]
+- ✨ : Timer events [[4eb8b4d](https://github.com/21r8390/M242-Microprozessoren/commit/4eb8b4d45031b206dfd61ef5a657e12f70eabf1f)]
+- ✨ : Stopwatch events [[27ad8f0](https://github.com/21r8390/M242-Microprozessoren/commit/27ad8f01e6e5bb8ad2579d2b25f8fda3cd41405b)]
 - ✨ : Add Buzzer driver [[caf51cb](https://github.com/21r8390/M242-Microprozessoren/commit/caf51cba15e996d9773d3739ec151c224d847fd0)]
 - ✨ : Added display driver [[f9d28df](https://github.com/21r8390/M242-Microprozessoren/commit/f9d28df6d44ab788d7bd73f2b160ec5b3426d9a2)]
 - ✨ Added Seg_Driver for controlling the display [[f86a90d](https://github.com/21r8390/M242-Microprozessoren/commit/f86a90da5e8a7ccf7455e889d6f9d419861ebb97)]
@@ -12,6 +15,10 @@
 
 ### Changed
 
+- ⚡ : Use Led_Toggle instead of set [[e7afb0b](https://github.com/21r8390/M242-Microprozessoren/commit/e7afb0ba8315d17715dea1c8508e189b314db52f)]
+- ⚡ : Buzzer in its own task [[9164d65](https://github.com/21r8390/M242-Microprozessoren/commit/9164d652354567934f1af99eba9058955e09abd5)]
+- 🏗️ : Taster interrupt fires on low/high &amp; array for storage [[4b71dcf](https://github.com/21r8390/M242-Microprozessoren/commit/4b71dcf17a5e1fba930b4f51eb051c8f673fae3b)]
+- 🎨 : place the number of call outside of the buzzer [[ca0e2f7](https://github.com/21r8390/M242-Microprozessoren/commit/ca0e2f797fcbff51bcf69a7e4f3f8529addfe50d)]
 - ⬆️ : STM now allows external tasks [[ff8f881](https://github.com/21r8390/M242-Microprozessoren/commit/ff8f881c9a03bd83b24464d1ecba08fd9dcf71f8)]
 - 🏗️ : Static Task &amp; display is low priority [[0072eb1](https://github.com/21r8390/M242-Microprozessoren/commit/0072eb11d3ef54cb40a8505f3644f800a802cb1e)]
 - 🏗️ : Use static semaphores [[3947301](https://github.com/21r8390/M242-Microprozessoren/commit/394730182689dfa608db164b26471d2b84408efd)]
@@ -23,6 +30,12 @@
 
 ### Fixed
 
+- 🚑 : Taster callbacks are triggered in a task [[db1efb0](https://github.com/21r8390/M242-Microprozessoren/commit/db1efb043d44ba4f67d55933863979e192e92355)]
+- 🐛 : Buzzer semaphore as extern [[1f796f3](https://github.com/21r8390/M242-Microprozessoren/commit/1f796f3962ef9ba9665ab18ba3a9b3f4b443afee)]
+- 🐛 : Only allow changes to timer when configuring [[3ca5b1c](https://github.com/21r8390/M242-Microprozessoren/commit/3ca5b1cf5d60111e29556475614f7295cf0da9b5)]
+- 🐛 : Reset the intermediate time on stop and start [[a5011f1](https://github.com/21r8390/M242-Microprozessoren/commit/a5011f165b1e909f32b3f22f61d4c637f757143e)]
+- 🐛 : LED_Treiber semaphore as extern [[3e7aa7e](https://github.com/21r8390/M242-Microprozessoren/commit/3e7aa7e918bb7ca5ae3be71c4063f5bd6b70e227)]
+- 🐛 : display semaphore as extern &amp; use unsigned int [[e0cbbed](https://github.com/21r8390/M242-Microprozessoren/commit/e0cbbede02aadda79aa94f1c8c7407218002f9c7)]
 - 🐛 : I dont know why?!? [[2d74f0f](https://github.com/21r8390/M242-Microprozessoren/commit/2d74f0f5cd5efc7c79b49121b586ffcdafe02104)]
 - 🐛 : Use the correct taster enum [[ad81fea](https://github.com/21r8390/M242-Microprozessoren/commit/ad81fea8dace0b76b69a91d09445e0b8960c9086)]
 - 🐛 : Start the real Taster_Treiber [[425ae04](https://github.com/21r8390/M242-Microprozessoren/commit/425ae046b690d527adbbb04a9f1f76848db5bfc0)]
@@ -31,7 +44,13 @@
 
 ### Miscellaneous
 
+- 📝 : Added State-Event_Diagramm [[34af5bf](https://github.com/21r8390/M242-Microprozessoren/commit/34af5bfce4cc5ab98ebd509ee25e89ff4c24fa31)]
+- 🧑‍💻 : Improved code and small bugs [[de66fdc](https://github.com/21r8390/M242-Microprozessoren/commit/de66fdce7744044265f1d37e0650129da4762177)]
+- 🩹 : Buzzer now works with the current ticks and allows multiple calls [[39d6b9d](https://github.com/21r8390/M242-Microprozessoren/commit/39d6b9d022b444aa94ca55b4baa511a2f0841f1a)]
+-  Merge branch &#x27;main&#x27; of https://github.com/21r8390/M242-Microprozessoren [[55740e7](https://github.com/21r8390/M242-Microprozessoren/commit/55740e7662b083b7506e2709255ed95787878a54)]
+- ⚰️ : Aufgaben is not needed [[55485c5](https://github.com/21r8390/M242-Microprozessoren/commit/55485c56a127c1d4a3c0f7ac4af1e5f2edd2ac7e)]
 -  Merge branch &#x27;main&#x27; of https://github.com/21r8390/M242-Microprozessoren [[795bb4e](https://github.com/21r8390/M242-Microprozessoren/commit/795bb4ec40382ecbd61a99c991d9b1784fe0e5ca)]
+- 📝 : Update changelog [[a3e0c98](https://github.com/21r8390/M242-Microprozessoren/commit/a3e0c98911d6c99ae5e4790bfc18d850f3914970)]
 - 🍻 : Reading taster does not need a semaphore [[37dfe62](https://github.com/21r8390/M242-Microprozessoren/commit/37dfe620ecc956c1d9c5e332fcd4f183d8bbd3e5)]
 - 💡 : Added more comments to the display driver [[7b792ea](https://github.com/21r8390/M242-Microprozessoren/commit/7b792ea8181a7640c9f8564d920cf292e3d4abb4)]
 - 📝 : Update changelog [[e809605](https://github.com/21r8390/M242-Microprozessoren/commit/e8096051d913c425b48090e7316e89abf9aac962)]
