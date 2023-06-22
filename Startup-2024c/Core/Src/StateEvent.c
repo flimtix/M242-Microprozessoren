@@ -246,7 +246,7 @@ void ShowLedState()
     {
         // Toggle the blinker state
         cycleCounter = 0;
-        shouldBlink = !shouldBlink;
+        shouldBlink = true;
     }
 
     // LED 1 leuchtet, wenn die Stoppuhr angezeigt wird.
@@ -276,6 +276,9 @@ void ShowLedState()
     if (shouldBlink)
     {
         LED_Toggle(LED_4);
+
+        // Reset the blinker state
+        shouldBlink = false;
     }
 }
 
