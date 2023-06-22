@@ -30,7 +30,7 @@ PURPOSE:    Dieser Treiber steuert den Buzzer an.
 osSemaphoreId_t buzzerSemaphoreHandleId;
 
 // Keep track of the biggest length of the buzzer
-static int buzzLength = 0;
+static long buzzUntil = 0;
 
 // State of the buzzer
 static bool isBuzzerOn = false;
@@ -42,6 +42,12 @@ static bool isBuzzerOn = false;
 // Toggle the buzzer state
 void SetBuzzer(bool buzzerState)
 {
+    // Only toggle the buzzer if the buzzer state is different
+    if (isBuzzerOn == buzzerState)
+    {
+        return;
+    }
+
     // Update the buzzer state
     isBuzzerOn = buzzerState;
 
@@ -55,6 +61,13 @@ void SetBuzzer(bool buzzerState)
     osSemaphoreRelease(buzzerSemaphoreHandleId);
 }
 
+// Check if the buzzer should be turned off
+bool IsBuzzTimeReached()
+{
+    // The buzzer should be turned off if the buzzUntil is lower than the current time
+    return buzzUntil <= osKernelGetTickCount();
+}
+
 //  ---------------------------------------
 //  5.     G L O B A L    F U N C T I O N S
 //  ---------------------------------------
@@ -63,26 +76,34 @@ void SetBuzzer(bool buzzerState)
 // This task will control the state of buzzer in the background
 void BuzzerTask(void *argument)
 {
+    // Variable to keep track of the current time that the buzzer is waiting for
+    long currentBuzzUntil = 0;
+
     while (true)
     {
         // Only beep the buzzer if the buzzer is off and there is a delay
-        if (!isBuzzerOn && buzzLength > 0)
+        if (!IsBuzzTimeReached())
         {
             SetBuzzer(true);
         }
 
-        // Wait before for for the buzzer to end
-        osDelay(DEFAULT_BUZZER_DELAY);
-
-        // Decrease the length that the buzzer already ran
-        // If the buzzer was called again while the buzzer was running the length of the new call will be decreased
-        if (buzzLength > 0)
+        // Check if the time of the buzzer is reached
+        if (IsBuzzTimeReached())
         {
-            buzzLength -= DEFAULT_BUZZER_DELAY;
+            // The buzzer is not needed so wait for the default delay before checking again
+            osDelay(DEFAULT_BUZZER_DELAY);
+        }
+        else
+        {
+            // Update the current time that the buzzer is waiting for
+            currentBuzzUntil = buzzUntil;
+
+            // Wait for the buzzer to finish
+            osDelayUntil(currentBuzzUntil);
         }
 
         // Only turn off the buzzer if the buzzer is on and there is no call
-        if (isBuzzerOn && buzzLength <= 0)
+        if (IsBuzzTimeReached())
         {
             SetBuzzer(false);
         }
@@ -93,14 +114,9 @@ void BuzzerTask(void *argument)
 void Buzzer_Beep(int length)
 {
     // Negative length is not supported by the buzzer
-    if (length <= 0)
+    if (length > 0)
     {
-        return;
-    }
-
-    // Update the length of the buzzer if the given length is bigger
-    if (length > buzzLength)
-    {
-        buzzLength = length;
+        // Update the length of the buzzer
+        buzzUntil = osKernelGetTickCount() + length;
     }
 }
