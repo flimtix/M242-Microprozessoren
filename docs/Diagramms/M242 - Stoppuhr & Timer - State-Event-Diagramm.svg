@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1302px" preserveAspectRatio="none" style="width:2324px;height:1302px;background:#FFFFFF;" version="1.1" viewBox="0 0 2324 1302" width="2324px" zoomAndPan="magnify"><defs/><g><!--MD5=[d218cd141be9b83104949cc4c5ed4d6d]
+cluster Timer--><g id="cluster_Timer"><path d="M1355.5,257 L2298.5,257 A12.5,12.5 0 0 1 2311,269.5 L2311,307.2188 L1343,307.2188 L1343,269.5 A12.5,12.5 0 0 1 1355.5,257 " fill="#F1F1F1" style="stroke:#F1F1F1;stroke-width:1.0;"/><rect fill="none" height="1039" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="968" x="1343" y="257"/><line style="stroke:#181818;stroke-width:0.5;" x1="1343" x2="2311" y1="307.2188" y2="307.2188"/><line style="stroke:#181818;stroke-width:0.5;" x1="1343" x2="2311" y1="284.6094" y2="284.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="36" x="1780.5" y="275.5332">Timer</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="1348" y="301.6426">LED 2 leuchtet</text></g><!--MD5=[a1a58a88c54b521485b244b5d3aa894d]
+cluster ConfigTimer--><g id="cluster_ConfigTimer"><path d="M1416.5,1052 L2258.5,1052 A12.5,12.5 0 0 1 2271,1064.5 L2271,1079.6094 L1404,1079.6094 L1404,1064.5 A12.5,12.5 0 0 1 1416.5,1052 " fill="#F1F1F1" style="stroke:#F1F1F1;stroke-width:1.0;"/><rect fill="none" height="204" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="867" x="1404" y="1052"/><line style="stroke:#181818;stroke-width:0.5;" x1="1404" x2="2271" y1="1079.6094" y2="1079.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123" x="1776" y="1070.5332">Timer konfigurieren</text></g><!--MD5=[34d2dfc6aed3b420e435e6a75d65bad1]
+cluster RunningTimer--><g id="cluster_RunningTimer"><path d="M1522.5,647 L2016.5,647 A12.5,12.5 0 0 1 2029,659.5 L2029,674.6094 L1510,674.6094 L1510,659.5 A12.5,12.5 0 0 1 1522.5,647 " fill="#F1F1F1" style="stroke:#F1F1F1;stroke-width:1.0;"/><rect fill="none" height="339" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="519" x="1510" y="647"/><line style="stroke:#181818;stroke-width:0.5;" x1="1510" x2="2029" y1="674.6094" y2="674.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="67" x="1736" y="665.5332">Timer läuft</text></g><ellipse cx="1951" cy="334" fill="#222222" rx="10" ry="10" style="stroke:none;stroke-width:1.0;"/><rect fill="#F1F1F1" height="40" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="181" x="1765.5" y="1184.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="171" x="1770.5" y="1210.2285">Eingerichtete Zeit anzeigen</text><g id="Timer.ConfigTimer.ZeitErhöhen"><rect fill="#F1F1F1" height="55.2188" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="157" x="2089.5" y="1177"/><line style="stroke:#181818;stroke-width:0.5;" x1="2089.5" x2="2246.5" y1="1204.6094" y2="1204.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="80" x="2128" y="1196.5332">Zeit erhöhen</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="137" x="2094.5" y="1224.1426">Um 1 Sekunde erhöht</text></g><g id="Timer.ConfigTimer.ZeitVerringern"><rect fill="#F1F1F1" height="55.2188" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="177" x="1436.5" y="1177"/><line style="stroke:#181818;stroke-width:0.5;" x1="1436.5" x2="1613.5" y1="1204.6094" y2="1204.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="1479" y="1196.5332">Zeit verringern</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157" x="1441.5" y="1224.1426">Um 1 Sekunde verringert</text></g><ellipse cx="1856" cy="1106" fill="#222222" rx="10" ry="10" style="stroke:none;stroke-width:1.0;"/><rect fill="#F1F1F1" height="40" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="148" x="1542" y="789"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138" x="1547" y="814.7285">Aktuelle Zeit anzeigen</text><g id="Timer.RunningTimer.Pausieren"><rect fill="#F1F1F1" height="55.2188" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="147" x="1738.5" y="907"/><line style="stroke:#181818;stroke-width:0.5;" x1="1738.5" x2="1885.5" y1="934.6094" y2="934.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="1780" y="926.5332">Pausieren</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="127" x="1743.5" y="954.1426">Zeit wird angehalten</text></g><g id="Timer.RunningTimer.TimerAbgelaufen"><rect fill="#F1F1F1" height="55.2188" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="131" x="1553.5" y="907"/><line style="stroke:#181818;stroke-width:0.5;" x1="1553.5" x2="1684.5" y1="934.6094" y2="934.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111" x="1563.5" y="926.5332">Timer abgelaufen</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="1558.5" y="954.1426">Buzzer ertönt</text></g><ellipse cx="1814" cy="701" fill="#222222" rx="10" ry="10" style="stroke:none;stroke-width:1.0;"/><ellipse cx="590" cy="19" fill="#222222" rx="10" ry="10" style="stroke:none;stroke-width:1.0;"/><g id="elem_N1"><path d="M635.5,6 L635.5,32.3516 L856.5,32.3516 L856.5,16 L846.5,6 L635.5,6 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M846.5,6 L846.5,16 L856.5,16 L846.5,6 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="200" x="641.5" y="24.4951">LED 4 blinkt immer im 2Hz interval</text></g><path d="M19.5,93 L1160.44,93 A12.5,12.5 0 0 1 1172.94,105.5 L1172.94,170.8906 L7,170.8906 L7,105.5 A12.5,12.5 0 0 1 19.5,93 " fill="#F1F1F1" style="stroke:#F1F1F1;stroke-width:1.0;"/><rect fill="none" height="481.7188" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="1165.94" x="7" y="93"/><line style="stroke:#181818;stroke-width:0.5;" x1="7" x2="1172.94" y1="170.8906" y2="170.8906"/><line style="stroke:#181818;stroke-width:0.5;" x1="7" x2="1172.94" y1="120.6094" y2="120.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58" x="560.97" y="112.5332">Stoppuhr</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="80" x="12" y="133.0664">LED 1 leuchtet</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="195" x="12" y="148.1602">LED 3 leuchtet, wenn Stoppuhr läuft</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="203" x="12" y="163.2539">LED 3 blinkt, wenn Zwischenzeit aktiv</text><ellipse cx="765.94" cy="191.8906" fill="#222222" rx="10" ry="10" style="stroke:none;stroke-width:1.0;"/><g id="Stoppuhr.SAktuelleZeitAnzeigen"><rect fill="#F1F1F1" height="55.2188" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="463" x="229.44" y="255.8906"/><line style="stroke:#181818;stroke-width:0.5;" x1="229.44" x2="692.44" y1="283.5" y2="283.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138" x="391.94" y="275.4238">Aktuelle Zeit anzeigen</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="443" x="234.44" y="303.0332">Wenn 9:59:59 erreicht, werden Zehntelsekunden nicht mehr angezeigt</text></g><g id="Stoppuhr.LeereZeitAnzeigen"><rect fill="#F1F1F1" height="55.2188" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="170" x="747.94" y="500.8906"/><line style="stroke:#181818;stroke-width:0.5;" x1="747.94" x2="917.94" y1="528.5" y2="528.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="770.44" y="520.4238">Leere Zeit anzeigen</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="150" x="752.94" y="548.0332">00:00:00 wird angezeigt</text></g><g id="Stoppuhr.ZwischenZeitAnzeigen"><rect fill="#F1F1F1" height="72.8281" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="228" x="127.94" y="364.8906"/><line style="stroke:#181818;stroke-width:0.5;" x1="127.94" x2="355.94" y1="392.5" y2="392.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="140" x="171.94" y="384.4238">Zwischenzeit anzeigen</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="192" x="132.94" y="412.0332">Zeit beim Stopp wird angezeigt</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="208" x="132.94" y="429.6426">Zähler lauft im Hintergrund weiter</text></g><g id="Stoppuhr.EndzeitAnzeigen"><rect fill="#F1F1F1" height="72.8281" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="212" x="409.94" y="491.8906"/><line style="stroke:#181818;stroke-width:0.5;" x1="409.94" x2="621.94" y1="519.5" y2="519.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107" x="462.44" y="511.4238">Endzeit anzeigen</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="192" x="414.94" y="539.0332">Zeit beim Stopp wird angezeigt</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="144" x="414.94" y="556.6426">Zähler wird angehalten</text></g><!--MD5=[abb23f2ddbfe905a8c7e29a761bdbc8d]
+link *start*Stoppuhr to SAktuelleZeitAnzeigen--><g id="link_*start*Stoppuhr_SAktuelleZeitAnzeigen"><path d="M756.47,195.6706 C726.42,204.4906 630.71,232.5706 556.26,254.4206 " fill="none" id="*start*Stoppuhr-to-SAktuelleZeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="551.39,255.8506,561.15,257.1706,556.19,254.4506,558.91,249.4906,551.39,255.8506" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="80" x="667.94" y="234.3857">Stoppuhr läuft</text></g><!--MD5=[876f016c794e417d30e82d2a589edab3]
+link *start*Stoppuhr to LeereZeitAnzeigen--><g id="link_*start*Stoppuhr_LeereZeitAnzeigen"><path d="M775.88,193.4306 C796.75,194.9306 846.15,200.4306 881.94,219.8906 C943.24,253.2206 967.65,264.6706 994.94,328.8906 C1024.3,398.0206 944.45,462.3106 886.69,498.0706 " fill="none" id="*start*Stoppuhr-to-LeereZeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="882.22,500.8106,891.9825,499.5095,886.4807,498.1941,887.7961,492.6923,882.22,500.8106" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="157" x="1000.94" y="343.3857">Stoppuhr ist nicht gestartet</text></g><!--MD5=[025c03dcfe636bb5cd4c8a361e1bb1fc]
+link *start*Stoppuhr to ZwischenZeitAnzeigen--><g id="link_*start*Stoppuhr_ZwischenZeitAnzeigen"><path d="M755.87,192.9806 C673,193.8506 105.49,201.7406 55.94,255.8906 C18,297.3406 74.39,335.9306 134.76,362.7806 " fill="none" id="*start*Stoppuhr-to-ZwischenZeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="139.49,364.8606,132.8669,357.5712,134.9145,362.8445,129.6412,364.8921,139.49,364.8606" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="162" x="56.94" y="288.8857">Zwischenzeit wird angezeigt</text></g><!--MD5=[ae6a7630d9474e215388c190f93686b3]
+link *start*Stoppuhr to EndzeitAnzeigen--><g id="link_*start*Stoppuhr_EndzeitAnzeigen"><path d="M775.03,196.6006 C792.96,204.4506 832.53,224.6606 848.94,255.8906 C858.34,273.8006 866.27,421.8606 853.94,437.8906 C826.17,473.9706 714.88,498.5006 627.49,512.6206 " fill="none" id="*start*Stoppuhr-to-EndzeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="622.3,513.4606,631.8175,515.9939,627.2376,512.6735,630.558,508.0936,622.3,513.4606" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="124" x="859.94" y="343.3857">Stoppuhr ist gestoppt</text></g><!--MD5=[02bf5b7f2e5a08ad49e01bca58df50f0]
+link SAktuelleZeitAnzeigen to SAktuelleZeitAnzeigen--><g id="link_SAktuelleZeitAnzeigen_SAktuelleZeitAnzeigen"><path d="M692.6,276.9306 C703.83,278.5506 710.44,280.7006 710.44,283.3906 C710.44,285.6206 705.91,287.4806 697.97,288.9706 " fill="none" id="SAktuelleZeitAnzeigen-to-SAktuelleZeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="692.6,289.8506,702.1305,292.3345,697.5335,289.0379,700.8301,284.4409,692.6,289.8506" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="117" x="716.44" y="288.8857">Zeit + 1/10 Sekunde</text></g><!--MD5=[b2c8003b86c560f6da3674eb2e6b93ac]
+link LeereZeitAnzeigen to SAktuelleZeitAnzeigen--><g id="link_LeereZeitAnzeigen_SAktuelleZeitAnzeigen"><path d="M814.98,500.6206 C789.8,465.0006 740.8,402.1706 684.94,364.8906 C651.05,342.2806 610.05,325.1406 572.44,312.6206 " fill="none" id="LeereZeitAnzeigen-to-SAktuelleZeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="567.39,310.9606,574.6991,317.5619,572.1419,312.5161,577.1878,309.9589,567.39,310.9606" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="763.94" y="406.8857">Taster S1 drücken</text></g><!--MD5=[3f23f84a75865b70e9a88ad873dd52ec]
+link SAktuelleZeitAnzeigen to ZwischenZeitAnzeigen--><g id="link_SAktuelleZeitAnzeigen_ZwischenZeitAnzeigen"><path d="M360.43,310.9506 C347.11,316.0806 333.92,322.0306 321.94,328.8906 C317.31,331.5306 300.86,346.0806 284.06,361.3706 " fill="none" id="SAktuelleZeitAnzeigen-to-ZwischenZeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="280.25,364.8506,289.5906,361.7276,283.9393,361.4759,284.191,355.8246,280.25,364.8506" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="322.94" y="343.3857">Taster S3 drücken</text></g><!--MD5=[c6de83ab15de6fde18ca19e9c2ad90ac]
+link ZwischenZeitAnzeigen to SAktuelleZeitAnzeigen--><g id="link_ZwischenZeitAnzeigen_SAktuelleZeitAnzeigen"><path d="M195.97,364.5906 C186.27,352.8906 181.46,340.0506 190.94,328.8906 C197.48,321.1806 209.33,314.8006 224.52,309.5206 " fill="none" id="ZwischenZeitAnzeigen-to-SAktuelleZeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="229.34,307.9206,219.5361,306.9808,224.598,309.506,222.0728,314.568,229.34,307.9206" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="191.94" y="343.3857">Taster S3 drücken</text></g><!--MD5=[d2c1d6d579be35e60d8c6c8f4dfd10e2]
+link ZwischenZeitAnzeigen to EndzeitAnzeigen--><g id="link_ZwischenZeitAnzeigen_EndzeitAnzeigen"><path d="M274.68,437.9006 C288.22,450.8206 304.76,464.5306 321.94,473.8906 C347.45,487.8006 376.87,498.3206 404.96,506.1906 " fill="none" id="ZwischenZeitAnzeigen-to-EndzeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="409.82,507.5306,402.2036,501.2863,404.9992,506.2042,400.0813,508.9997,409.82,507.5306" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="322.94" y="470.3857">Taster S2 drücken</text></g><!--MD5=[f1bf7bb49ad1e4ff831bafd902887e0a]
+link SAktuelleZeitAnzeigen to EndzeitAnzeigen--><g id="link_SAktuelleZeitAnzeigen_EndzeitAnzeigen"><path d="M455.62,311.1106 C450.5,342.2606 445.24,394.9506 457.94,437.8906 C463.07,455.2706 472.76,472.4406 482.77,487.0206 " fill="none" id="SAktuelleZeitAnzeigen-to-EndzeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="485.88,491.4606,484.0003,481.7928,483.0146,487.3631,477.4443,486.3774,485.88,491.4606" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="458.94" y="406.8857">Taster S2 drücken</text></g><!--MD5=[98a018fa868472a5bf0b898f53a8366d]
+link EndzeitAnzeigen to SAktuelleZeitAnzeigen--><g id="link_EndzeitAnzeigen_SAktuelleZeitAnzeigen"><path d="M541.99,491.6006 C563.14,457.8206 586.38,406.3206 565.94,364.8906 C555.54,343.8206 536.7,326.7406 517.81,313.8206 " fill="none" id="EndzeitAnzeigen-to-SAktuelleZeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="513.53,310.9606,518.7799,319.2936,517.6837,313.744,523.2333,312.6478,513.53,310.9606" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="573.94" y="406.8857">Taster S1 drücken</text></g><!--MD5=[096baae9f97fc5bcb66785888fe2d05e]
+link EndzeitAnzeigen to LeereZeitAnzeigen--><g id="link_EndzeitAnzeigen_LeereZeitAnzeigen"><path d="M622.37,528.3906 C661.45,528.3906 705.27,528.3906 742.78,528.3906 " fill="none" id="EndzeitAnzeigen-to-LeereZeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="747.8,528.3906,738.8,524.3906,742.8,528.3906,738.8,532.3906,747.8,528.3906" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="631.94" y="521.8857">Taster S3 drücken</text></g><!--MD5=[6b86af7d250541b200e640f6fd6ff49a]
+link *start to Stoppuhr--><g id="link_*start_Stoppuhr"><path d="M590,29.03 C590,40.35 590,61.48 590,87.53 " fill="none" id="*start-to-Stoppuhr" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="590,92.8,594,83.8,590,87.8,586,83.8,590,92.8" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[560872e3b9d69698e957dec19def5e56]
+link *start*Timer to ConfigTimer--><g id="link_*start*Timer_ConfigTimer"><path d="M1957.38,342.37 C1988.07,378.58 2119,542.35 2119,700 C2119,700 2119,700 2119,935.5 C2119,988.14 2069.92,982.57 2021,1002 C1953.64,1028.76 1932.19,1021.55 1860,1028 C1847.82,1029.09 1429.05,1027.79 1420,1036 C1417.2313,1038.5113 1415.0158,1041.4261 1413.2602,1044.61 C1412.3824,1046.2019 1411.6196,1047.8611 1410.9601,1049.5707 C1410.7952,1049.9981 1410.6367,1050.4287 1410.4846,1050.8621 C1410.4085,1051.0788 1410.334,1051.2963 1410.261,1051.5144 C1410.2246,1051.6235 1410.1885,1051.7327 1410.1528,1051.8421 " fill="none" id="*start*Timer-to-ConfigTimer" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1410.1528,1051.8421,1416.7479,1044.5275,1411.7042,1047.0889,1409.1428,1042.0452,1410.1528,1051.8421" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="92" x="2120" y="814.4951">Timer läuft nicht</text></g><!--MD5=[1a608ec24145787c5a8da4388cd7b2c5]
+link *start*Timer to RunningTimer--><g id="link_*start*Timer_RunningTimer"><path d="M1953.95,343.91 C1964.88,378.8 1999.38,507.62 1937,575 C1811.77,710.29 1655.05,499.35 1526,631 C1523.3825,633.67 1521.2816,636.7052 1519.6105,639.9779 C1518.7749,641.6142 1518.0468,643.31 1517.4154,645.0492 C1517.2575,645.484 1517.1057,645.9215 1516.9597,646.3614 C1516.9232,646.4714 1516.8871,646.5816 1516.8513,646.6919 " fill="none" id="*start*Timer-to-RunningTimer" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1516.8513,646.6919,1523.4319,639.3641,1518.3933,641.9356,1515.8219,636.897,1516.8513,646.6919" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="60" x="1899" y="619.4951">Timer läuft</text></g><!--MD5=[ab1c9ad4db6a4ba4639618b5538132f0]
+link *start*ConfigTimer to EingerichteteZeitAnzeigen--><g id="link_*start*ConfigTimer_EingerichteteZeitAnzeigen"><path d="M1856,1116.25 C1856,1130.6 1856,1158.7 1856,1179.15 " fill="none" id="*start*ConfigTimer-to-EingerichteteZeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1856,1184.17,1860,1175.17,1856,1179.17,1852,1175.17,1856,1184.17" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[a1fa994246cf99cae6c815286189b47a]
+link EingerichteteZeitAnzeigen to ZeitErhöhen--><g id="link_EingerichteteZeitAnzeigen_ZeitErhöhen"><path d="M1946.56,1223.42 C1952.45,1224.24 1958.3,1224.95 1964,1225.5 C2011.78,1230.1 2024.28,1230.66 2072,1225.5 C2076,1225.07 2080.07,1224.54 2084.17,1223.93 " fill="none" id="EingerichteteZeitAnzeigen-to-ZeitErhöhen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="2089.38,1223.12,2079.8708,1220.5557,2084.4398,1223.891,2081.1045,1228.46,2089.38,1223.12" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="1965" y="1221.9951">Taster S1 drücken</text></g><!--MD5=[d9cffa0b86fd3b849d28972b63c249cd]
+link ZeitErhöhen to EingerichteteZeitAnzeigen--><g id="link_ZeitErhöhen_EingerichteteZeitAnzeigen"><path d="M2089.3,1204.5 C2047.51,1204.5 1995.82,1204.5 1951.73,1204.5 " fill="none" id="ZeitErhöhen-to-EingerichteteZeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1946.66,1204.5,1955.66,1208.5,1951.66,1204.5,1955.66,1200.5,1946.66,1204.5" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="115" x="1960.5" y="1197.9951">Taster S1 loslassen</text></g><!--MD5=[f2d9fcf0988ee0e0bcb87e32af3409e8]
+reverse link ZeitVerringern to EingerichteteZeitAnzeigen--><g id="link_ZeitVerringern_EingerichteteZeitAnzeigen"><path d="M1618.9,1223.59 C1624.5,1224.34 1630.07,1224.99 1635.5,1225.5 C1683.29,1230 1695.7,1229.92 1743.5,1225.5 C1750.62,1224.84 1757.97,1223.95 1765.33,1222.91 " fill="none" id="ZeitVerringern-backto-EingerichteteZeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1613.75,1222.87,1622.117,1228.0655,1618.7028,1223.5551,1623.2132,1220.1409,1613.75,1222.87" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="1636.5" y="1221.9951">Taster S2 drücken</text></g><!--MD5=[5df3bbd0147b250ad0be27db71bd8aed]
+link ZeitVerringern to EingerichteteZeitAnzeigen--><g id="link_ZeitVerringern_EingerichteteZeitAnzeigen"><path d="M1613.7,1204.5 C1658.97,1204.5 1714.09,1204.5 1760.31,1204.5 " fill="none" id="ZeitVerringern-to-EingerichteteZeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1765.32,1204.5,1756.32,1200.5,1760.32,1204.5,1756.32,1208.5,1765.32,1204.5" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="115" x="1632" y="1197.9951">Taster S2 loslassen</text></g><!--MD5=[c7d1638a0f943ddd31f55ef278cb2291]
+link EingerichteteZeitAnzeigen to RunningTimer--><g id="link_EingerichteteZeitAnzeigen_RunningTimer"><path d="M1765.41,1192.5 C1638.18,1176.12 1419.37,1144.24 1396,1116 C1335.32,1042.69 1364.8725,940.2275 1410.0638,855.58 C1432.6594,813.2562 1459.1647,775.3862 1480.2555,747.8409 C1490.8009,734.0683 1499.9926,722.8768 1506.6652,715.0004 C1507.4993,714.0158 1508.294,713.083 1509.0471,712.2035 C1509.2353,711.9836 1509.421,711.7671 1509.604,711.5539 " fill="none" id="EingerichteteZeitAnzeigen-to-RunningTimer" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1509.604,711.5539,1500.7067,715.7773,1506.3472,715.3477,1506.7768,720.9882,1509.604,711.5539" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="1385" y="939.9951">Taster S3 drücken</text></g><!--MD5=[4831a708bc6b2c0b0b3e3c052bf09cf4]
+link *start*RunningTimer to TAktuelleZeitAnzeigen--><g id="link_*start*RunningTimer_TAktuelleZeitAnzeigen"><path d="M1806.08,707.26 C1804.11,708.52 1802,709.83 1800,711 C1752.65,738.63 1696.74,767.61 1659.08,786.61 " fill="none" id="*start*RunningTimer-to-TAktuelleZeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1654.58,788.88,1664.4163,788.3825,1659.0406,786.6211,1660.802,781.2454,1654.58,788.88" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="60" x="1746" y="755.4951">Timer läuft</text></g><!--MD5=[e30a7230939f2fd39edcd5f4558f2292]
+link *start*RunningTimer to Pausieren--><g id="link_*start*RunningTimer_Pausieren"><path d="M1818.59,709.94 C1830.81,730.72 1865.74,787.92 1903,829 C1920.74,848.56 1952.35,854.84 1938,877 C1926.89,894.16 1909.2,906.16 1890.55,914.53 " fill="none" id="*start*RunningTimer-to-Pausieren" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1885.79,916.58,1895.638,916.7113,1890.3857,914.6104,1892.4866,909.3581,1885.79,916.58" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="100" x="1904" y="814.4951">Timer ist pausiert</text></g><!--MD5=[d826b4057958e29a15714c958344e994]
+link TAktuelleZeitAnzeigen to TAktuelleZeitAnzeigen--><g id="link_TAktuelleZeitAnzeigen_TAktuelleZeitAnzeigen"><path d="M1690.13,798.21 C1709.95,798.81 1725,802.4 1725,809 C1725,815.03 1712.43,818.55 1695.12,819.57 " fill="none" id="TAktuelleZeitAnzeigen-to-TAktuelleZeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1690.13,819.79,1699.3033,823.3748,1695.1248,819.5617,1698.9379,815.3832,1690.13,819.79" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="113" x="1731" y="814.4951">Zeit - 1/10 Sekunde</text></g><!--MD5=[3fc762c149b46829d6bdc5e2e91bed48]
+link TAktuelleZeitAnzeigen to Pausieren--><g id="link_TAktuelleZeitAnzeigen_Pausieren"><path d="M1690.23,818.71 C1740.1,826.26 1799.45,839.15 1815,859 C1824.24,870.8 1824.51,887.16 1822.03,901.55 " fill="none" id="TAktuelleZeitAnzeigen-to-Pausieren" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1821.01,906.75,1826.6838,898.6997,1821.9823,901.8455,1818.8366,897.144,1821.01,906.75" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="1823" y="873.4951">Taster S2 drücken</text></g><!--MD5=[29f7a4e52f8039fa0d73422014771d6f]
+link Pausieren to TAktuelleZeitAnzeigen--><g id="link_Pausieren_TAktuelleZeitAnzeigen"><path d="M1756.04,906.91 C1738.67,898.02 1719.72,887.65 1703,877 C1681.8,863.5 1659.37,846.13 1642.59,832.47 " fill="none" id="Pausieren-to-TAktuelleZeitAnzeigen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1638.45,829.08,1642.8774,837.8776,1642.3179,832.2485,1647.947,831.689,1638.45,829.08" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="1704" y="873.4951">Taster S1 drücken</text></g><!--MD5=[10e78ecac9351147c57f5189b3b28998]
+link Pausieren to ConfigTimer--><g id="link_Pausieren_ConfigTimer"><path d="M1777.47,962.22 C1745.45,985.1 1695.41,1016.17 1646,1028 C1633.78,1030.93 1429.23,1027.48 1420,1036 C1417.2525,1038.535 1415.0531,1041.4678 1413.3094,1044.6649 C1412.4376,1046.2635 1411.6796,1047.9281 1411.024,1049.6421 C1410.8601,1050.0706 1410.7026,1050.5022 1410.5514,1050.9366 C1410.4757,1051.1538 1410.4016,1051.3718 1410.3291,1051.5903 C1410.2928,1051.6996 1410.2569,1051.8091 1410.2214,1051.9187 " fill="none" id="Pausieren-to-ConfigTimer" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1410.2214,1051.9187,1416.8004,1044.5895,1411.7623,1047.1621,1409.1898,1042.124,1410.2214,1051.9187" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="1695" y="1024.4951">Taster S3 drücken</text></g><!--MD5=[6db5374766cf5cf5b0dface51a5505d9]
+link TAktuelleZeitAnzeigen to TimerAbgelaufen--><g id="link_TAktuelleZeitAnzeigen_TimerAbgelaufen"><path d="M1592.62,829.03 C1579.9,841.83 1567.88,859.5 1574,877 C1577.18,886.09 1582.5,894.81 1588.39,902.56 " fill="none" id="TAktuelleZeitAnzeigen-to-TimerAbgelaufen" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1591.71,906.77,1589.2581,897.2312,1588.6058,902.8504,1582.9866,902.198,1591.71,906.77" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="87" x="1575" y="873.4951">Zeit abgelaufen</text></g><!--MD5=[5ea47a53ae54c883bd4baef3e14172c1]
+link TimerAbgelaufen to ConfigTimer--><g id="link_TimerAbgelaufen_ConfigTimer"><path d="M1587.02,962.15 C1569.77,975.52 1547.64,991.13 1526,1002 C1481.79,1024.21 1451.41,997.78 1420,1036 C1417.6263,1038.8888 1415.7102,1042.0897 1414.1757,1045.4848 C1413.4084,1047.1824 1412.7366,1048.9286 1412.1507,1050.7085 C1412.0774,1050.931 1412.0055,1051.154 1411.935,1051.3775 C1411.8997,1051.4893 1411.8647,1051.6012 1411.8301,1051.7132 " fill="none" id="TimerAbgelaufen-to-ConfigTimer" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1411.8301,1051.7132,1418.31,1044.2962,1413.3069,1046.9363,1410.6669,1041.9333,1411.8301,1051.7132" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="135" x="1502" y="1024.4951">3 Sekunden abgelaufen</text></g><!--MD5=[4a3b8708fcf27ad1085de40b49d5df03]
+link TAktuelleZeitAnzeigen to ConfigTimer--><g id="link_TAktuelleZeitAnzeigen_ConfigTimer"><path d="M1690.18,816.23 C1780.2,824.55 1922.04,840.42 1938,859 C1952.86,876.29 1985.73,919.3 1903,1002 C1872.65,1032.34 1852.46,1021.73 1810,1028 C1799.28,1029.58 1428.02,1028.71 1420,1036 C1417.2337,1038.515 1415.0202,1041.4327 1413.2659,1044.6186 C1412.3888,1046.2115 1411.6266,1047.8716 1410.9675,1049.5818 C1410.8027,1050.0094 1410.6444,1050.4401 1410.4923,1050.8737 C1410.4163,1051.0905 1410.3418,1051.308 1410.2689,1051.5262 C1410.2325,1051.6353 1410.1964,1051.7446 1410.1607,1051.8541 " fill="none" id="TAktuelleZeitAnzeigen-to-ConfigTimer" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1410.1607,1051.8541,1416.7539,1044.5377,1411.7109,1047.1004,1409.1481,1042.0574,1410.1607,1051.8541" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="1958" y="939.9951">Taster S3 drücken</text></g><!--MD5=[e8ae83f704cd5341efffa63e5210209a]
+link Stoppuhr to Timer--><g id="link_Stoppuhr_Timer"><path d="M1173.03,354.68 C1178.82,354.79 1184.59,354.9 1190.32,355 C1206.21,355.28 1318.91,361.7 1333.32,355 C1335.825,353.835 1338.1025,352.12 1340.127,350.1641 C1341.1393,349.1861 1342.0883,348.1479 1342.9709,347.0881 " fill="none" id="Stoppuhr-to-Timer" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1342.9709,347.0881,1334.1378,351.4442,1339.7712,350.9302,1340.2852,356.5637,1342.9709,347.0881" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="141" x="1191.32" y="351.4951">Taster S3 lange drücken</text></g><!--MD5=[0f8db74f6935ea4a7a18c365e631c93f]
+reverse link Stoppuhr to Timer--><g id="link_Stoppuhr_Timer"><path d="M1178.21,334 C1225.955,334 1267.4075,334 1297.735,334 C1312.8988,334 1325.2813,334 1334.2784,334 C1336.5277,334 1338.5654,334 1340.3821,334 C1341.2905,334 1342.1436,334 1342.9402,334 " fill="none" id="Stoppuhr-backto-Timer" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1173.06,334,1182.06,338,1178.06,334,1182.06,330,1173.06,334" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="141" x="1191.32" y="327.4951">Taster S3 lange drücken</text></g><!--MD5=[257210eabe18899b6053f38ffd18b40a]
+@startuml "M242 - Stoppuhr & Timer - State-Event-Diagramm"
+hide empty description
+
+' LED & Buzzer über Kommentare darstellen
+' Stimmt Buzzer pausieren
+
+[*] - -> Stoppuhr
+
+note "LED 4 blinkt immer im 2Hz interval" AS N1
+
+state Stoppuhr {
+    ' Eigenschaften
+    Stoppuhr : LED 1 leuchtet
+    Stoppuhr : LED 3 leuchtet, wenn Stoppuhr läuft
+    Stoppuhr : LED 3 blinkt, wenn Zwischenzeit aktiv
+
+    ' Events
+    [*] - -> SAktuelleZeitAnzeigen : Stoppuhr läuft
+    [*] - -> LeereZeitAnzeigen : Stoppuhr ist nicht gestartet
+    [*] - -> ZwischenZeitAnzeigen : Zwischenzeit wird angezeigt
+    [*] - -> EndzeitAnzeigen : Stoppuhr ist gestoppt
+
+    ' States
+    state LeereZeitAnzeigen as "Leere Zeit anzeigen"
+    LeereZeitAnzeigen : 00:00:00 wird angezeigt
+    
+    state SAktuelleZeitAnzeigen as "Aktuelle Zeit anzeigen"
+    SAktuelleZeitAnzeigen : Wenn 9:59:59 erreicht, werden Zehntelsekunden nicht mehr angezeigt
+
+    state ZwischenZeitAnzeigen as "Zwischenzeit anzeigen"
+    ZwischenZeitAnzeigen : Zeit beim Stopp wird angezeigt
+    ZwischenZeitAnzeigen : Zähler lauft im Hintergrund weiter
+    
+    state EndzeitAnzeigen as "Endzeit anzeigen"
+    EndzeitAnzeigen : Zeit beim Stopp wird angezeigt
+    EndzeitAnzeigen : Zähler wird angehalten
+
+    ' Events
+    SAktuelleZeitAnzeigen -> SAktuelleZeitAnzeigen : Zeit + 1/10 Sekunde
+        
+    LeereZeitAnzeigen -> SAktuelleZeitAnzeigen : Taster S1 drücken
+
+    SAktuelleZeitAnzeigen - -> ZwischenZeitAnzeigen : Taster S3 drücken
+    ZwischenZeitAnzeigen -> SAktuelleZeitAnzeigen : Taster S3 drücken
+    ZwischenZeitAnzeigen - -> EndzeitAnzeigen : Taster S2 drücken
+
+    SAktuelleZeitAnzeigen -> EndzeitAnzeigen : Taster S2 drücken
+    EndzeitAnzeigen -> SAktuelleZeitAnzeigen : Taster S1 drücken
+    EndzeitAnzeigen -> LeereZeitAnzeigen : Taster S3 drücken
+}
+
+state Timer {
+    ' Eigenschaften
+    Timer : LED 2 leuchtet
+
+    ' Events
+    [*] - -> ConfigTimer : Timer läuft nicht
+    [*] - -> RunningTimer : Timer läuft
+
+    state ConfigTimer as "Timer konfigurieren" {
+        ' States
+        state EingerichteteZeitAnzeigen as "Eingerichtete Zeit anzeigen"
+        state ZeitErhöhen as "Zeit erhöhen"
+        ZeitErhöhen : Um 1 Sekunde erhöht
+        state ZeitVerringern as "Zeit verringern"
+        ZeitVerringern : Um 1 Sekunde verringert
+
+        ' Events
+        [*] - -> EingerichteteZeitAnzeigen
+       
+        EingerichteteZeitAnzeigen -> ZeitErhöhen : Taster S1 drücken
+        ZeitErhöhen -> EingerichteteZeitAnzeigen : Taster S1 loslassen
+        
+        EingerichteteZeitAnzeigen -left-> ZeitVerringern : Taster S2 drücken
+        ZeitVerringern -> EingerichteteZeitAnzeigen : Taster S2 loslassen
+
+        EingerichteteZeitAnzeigen -> RunningTimer : Taster S3 drücken
+    }
+
+    state RunningTimer as "Timer läuft" {
+        ' States
+        state TAktuelleZeitAnzeigen as "Aktuelle Zeit anzeigen"
+        state Pausieren as "Pausieren"
+        Pausieren : Zeit wird angehalten
+        state TimerAbgelaufen as "Timer abgelaufen"
+        TimerAbgelaufen : Buzzer ertönt
+
+        ' Events
+        [*] - -> TAktuelleZeitAnzeigen : Timer läuft
+        [*] - -> Pausieren : Timer ist pausiert
+
+        TAktuelleZeitAnzeigen -> TAktuelleZeitAnzeigen : Zeit - 1/10 Sekunde
+
+        TAktuelleZeitAnzeigen - -> Pausieren : Taster S2 drücken 
+        Pausieren -> TAktuelleZeitAnzeigen : Taster S1 drücken
+        Pausieren - -> ConfigTimer : Taster S3 drücken
+
+        TAktuelleZeitAnzeigen - -> TimerAbgelaufen : Zeit abgelaufen
+        TimerAbgelaufen - - -> ConfigTimer : 3 Sekunden abgelaufen
+
+        TAktuelleZeitAnzeigen -> ConfigTimer : Taster S3 drücken
+    }
+}
+
+Stoppuhr -right-> Timer : Taster S3 lange drücken
+Timer -left-> Stoppuhr : Taster S3 lange drücken
+
+@enduml
+
+@startuml "M242 - Stoppuhr & Timer - State-Event-Diagramm"
+hide empty description
+
+
+[*] - -> Stoppuhr
+
+note "LED 4 blinkt immer im 2Hz interval" AS N1
+
+state Stoppuhr {
+    Stoppuhr : LED 1 leuchtet
+    Stoppuhr : LED 3 leuchtet, wenn Stoppuhr läuft
+    Stoppuhr : LED 3 blinkt, wenn Zwischenzeit aktiv
+
+    [*] - -> SAktuelleZeitAnzeigen : Stoppuhr läuft
+    [*] - -> LeereZeitAnzeigen : Stoppuhr ist nicht gestartet
+    [*] - -> ZwischenZeitAnzeigen : Zwischenzeit wird angezeigt
+    [*] - -> EndzeitAnzeigen : Stoppuhr ist gestoppt
+
+    state LeereZeitAnzeigen as "Leere Zeit anzeigen"
+    LeereZeitAnzeigen : 00:00:00 wird angezeigt
+    
+    state SAktuelleZeitAnzeigen as "Aktuelle Zeit anzeigen"
+    SAktuelleZeitAnzeigen : Wenn 9:59:59 erreicht, werden Zehntelsekunden nicht mehr angezeigt
+
+    state ZwischenZeitAnzeigen as "Zwischenzeit anzeigen"
+    ZwischenZeitAnzeigen : Zeit beim Stopp wird angezeigt
+    ZwischenZeitAnzeigen : Zähler lauft im Hintergrund weiter
+    
+    state EndzeitAnzeigen as "Endzeit anzeigen"
+    EndzeitAnzeigen : Zeit beim Stopp wird angezeigt
+    EndzeitAnzeigen : Zähler wird angehalten
+
+    SAktuelleZeitAnzeigen -> SAktuelleZeitAnzeigen : Zeit + 1/10 Sekunde
+        
+    LeereZeitAnzeigen -> SAktuelleZeitAnzeigen : Taster S1 drücken
+
+    SAktuelleZeitAnzeigen - -> ZwischenZeitAnzeigen : Taster S3 drücken
+    ZwischenZeitAnzeigen -> SAktuelleZeitAnzeigen : Taster S3 drücken
+    ZwischenZeitAnzeigen - -> EndzeitAnzeigen : Taster S2 drücken
+
+    SAktuelleZeitAnzeigen -> EndzeitAnzeigen : Taster S2 drücken
+    EndzeitAnzeigen -> SAktuelleZeitAnzeigen : Taster S1 drücken
+    EndzeitAnzeigen -> LeereZeitAnzeigen : Taster S3 drücken
+}
+
+state Timer {
+    Timer : LED 2 leuchtet
+
+    [*] - -> ConfigTimer : Timer läuft nicht
+    [*] - -> RunningTimer : Timer läuft
+
+    state ConfigTimer as "Timer konfigurieren" {
+        state EingerichteteZeitAnzeigen as "Eingerichtete Zeit anzeigen"
+        state ZeitErhöhen as "Zeit erhöhen"
+        ZeitErhöhen : Um 1 Sekunde erhöht
+        state ZeitVerringern as "Zeit verringern"
+        ZeitVerringern : Um 1 Sekunde verringert
+
+        [*] - -> EingerichteteZeitAnzeigen
+       
+        EingerichteteZeitAnzeigen -> ZeitErhöhen : Taster S1 drücken
+        ZeitErhöhen -> EingerichteteZeitAnzeigen : Taster S1 loslassen
+        
+        EingerichteteZeitAnzeigen -left-> ZeitVerringern : Taster S2 drücken
+        ZeitVerringern -> EingerichteteZeitAnzeigen : Taster S2 loslassen
+
+        EingerichteteZeitAnzeigen -> RunningTimer : Taster S3 drücken
+    }
+
+    state RunningTimer as "Timer läuft" {
+        state TAktuelleZeitAnzeigen as "Aktuelle Zeit anzeigen"
+        state Pausieren as "Pausieren"
+        Pausieren : Zeit wird angehalten
+        state TimerAbgelaufen as "Timer abgelaufen"
+        TimerAbgelaufen : Buzzer ertönt
+
+        [*] - -> TAktuelleZeitAnzeigen : Timer läuft
+        [*] - -> Pausieren : Timer ist pausiert
+
+        TAktuelleZeitAnzeigen -> TAktuelleZeitAnzeigen : Zeit - 1/10 Sekunde
+
+        TAktuelleZeitAnzeigen - -> Pausieren : Taster S2 drücken 
+        Pausieren -> TAktuelleZeitAnzeigen : Taster S1 drücken
+        Pausieren - -> ConfigTimer : Taster S3 drücken
+
+        TAktuelleZeitAnzeigen - -> TimerAbgelaufen : Zeit abgelaufen
+        TimerAbgelaufen - - -> ConfigTimer : 3 Sekunden abgelaufen
+
+        TAktuelleZeitAnzeigen -> ConfigTimer : Taster S3 drücken
+    }
+}
+
+Stoppuhr -right-> Timer : Taster S3 lange drücken
+Timer -left-> Stoppuhr : Taster S3 lange drücken
+
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 19:01:30 CEST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: de
+Country: CH
+--></g></svg>

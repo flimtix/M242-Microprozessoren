@@ -1,4 +1,4 @@
-@startuml "M242 - Stoppuhr"
+@startuml "M242 - Stoppuhr & Timer - State-Event-Diagramm"
 hide empty description
 
 ' LED & Buzzer über Kommentare darstellen
@@ -15,8 +15,10 @@ state Stoppuhr {
     Stoppuhr : LED 3 blinkt, wenn Zwischenzeit aktiv
 
     ' Events
-    [*] --> LeereZeitAnzeigen : Stoppuhr ist nicht gestartet
     [*] --> SAktuelleZeitAnzeigen : Stoppuhr läuft
+    [*] --> LeereZeitAnzeigen : Stoppuhr ist nicht gestartet
+    [*] --> ZwischenZeitAnzeigen : Zwischenzeit wird angezeigt
+    [*] --> EndzeitAnzeigen : Stoppuhr ist gestoppt
 
     ' States
     state LeereZeitAnzeigen as "Leere Zeit anzeigen"
@@ -38,7 +40,7 @@ state Stoppuhr {
         
     LeereZeitAnzeigen -> SAktuelleZeitAnzeigen : Taster S1 drücken
 
-    SAktuelleZeitAnzeigen -> ZwischenZeitAnzeigen : Taster S3 drücken
+    SAktuelleZeitAnzeigen --> ZwischenZeitAnzeigen : Taster S3 drücken
     ZwischenZeitAnzeigen -> SAktuelleZeitAnzeigen : Taster S3 drücken
     ZwischenZeitAnzeigen --> EndzeitAnzeigen : Taster S2 drücken
 
@@ -59,13 +61,16 @@ state Timer {
         ' States
         state EingerichteteZeitAnzeigen as "Eingerichtete Zeit anzeigen"
         state ZeitErhöhen as "Zeit erhöhen"
+        ZeitErhöhen : Um 1 Sekunde erhöht
         state ZeitVerringern as "Zeit verringern"
+        ZeitVerringern : Um 1 Sekunde verringert
 
         ' Events
         [*] --> EingerichteteZeitAnzeigen
        
         EingerichteteZeitAnzeigen -> ZeitErhöhen : Taster S1 drücken
         ZeitErhöhen -> EingerichteteZeitAnzeigen : Taster S1 loslassen
+        
         EingerichteteZeitAnzeigen -left-> ZeitVerringern : Taster S2 drücken
         ZeitVerringern -> EingerichteteZeitAnzeigen : Taster S2 loslassen
 
@@ -75,23 +80,25 @@ state Timer {
     state RunningTimer as "Timer läuft" {
         ' States
         state TAktuelleZeitAnzeigen as "Aktuelle Zeit anzeigen"
+        state Pausieren as "Pausieren"
+        Pausieren : Zeit wird angehalten
         state TimerAbgelaufen as "Timer abgelaufen"
         TimerAbgelaufen : Buzzer ertönt
 
-        state Pausieren as "Pausieren"
-        Pausieren : Buzzer ertönt pausieren / fortsetzen
-
         ' Events
-        [*] --> TAktuelleZeitAnzeigen
+        [*] --> TAktuelleZeitAnzeigen : Timer läuft
+        [*] --> Pausieren : Timer ist pausiert
+
         TAktuelleZeitAnzeigen -> TAktuelleZeitAnzeigen : Zeit - 1/10 Sekunde
 
-        TAktuelleZeitAnzeigen --> Pausieren : Taster S1 drücken 
-        Pausieren -> TAktuelleZeitAnzeigen : Taster S2 drücken
+        TAktuelleZeitAnzeigen --> Pausieren : Taster S2 drücken 
+        Pausieren -> TAktuelleZeitAnzeigen : Taster S1 drücken
+        Pausieren --> ConfigTimer : Taster S3 drücken
 
         TAktuelleZeitAnzeigen --> TimerAbgelaufen : Zeit abgelaufen
-        TimerAbgelaufen -> ConfigTimer : 3 Sekunden abgelaufen
+        TimerAbgelaufen ---> ConfigTimer : 3 Sekunden abgelaufen
 
-        TAktuelleZeitAnzeigen --> ConfigTimer : Taster S3 drücken
+        TAktuelleZeitAnzeigen -> ConfigTimer : Taster S3 drücken
     }
 }
 
