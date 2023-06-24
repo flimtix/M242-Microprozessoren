@@ -50,9 +50,12 @@
 
 ### Miscellaneous
 
+- 📝 : Added project requirements [[4294d35](https://github.com/21r8390/M242-Microprozessoren/commit/4294d35bc42055763aaeff578bfe682f892d1f94)]
+- 📝 : Added Fazit [[f8d7818](https://github.com/21r8390/M242-Microprozessoren/commit/f8d781868d17f2b262c72b92792d4a422b9e5db2)]
 - 📝 : Component diagram &amp; Readme with UMLs [[ebba8f0](https://github.com/21r8390/M242-Microprozessoren/commit/ebba8f0eed84137973495e4eb8117cf70ed77884)]
 - 📝 : Added class diagram [[581a95b](https://github.com/21r8390/M242-Microprozessoren/commit/581a95bfa7d02e4e697f2e6eb28479fff0e65e41)]
 - 📝 : Update State-Event-Diagramm [[9ec98ef](https://github.com/21r8390/M242-Microprozessoren/commit/9ec98ef3215d93affb8b47c179bd16a723e56782)]
+- 📝 : Update changelog [[fe00af0](https://github.com/21r8390/M242-Microprozessoren/commit/fe00af009def4a54c3a82293ce0f16f088068632)]
 - 📝 : Added State-Event_Diagramm [[34af5bf](https://github.com/21r8390/M242-Microprozessoren/commit/34af5bfce4cc5ab98ebd509ee25e89ff4c24fa31)]
 - 🧑‍💻 : Improved code and small bugs [[de66fdc](https://github.com/21r8390/M242-Microprozessoren/commit/de66fdce7744044265f1d37e0650129da4762177)]
 - 🩹 : Buzzer now works with the current ticks and allows multiple calls [[39d6b9d](https://github.com/21r8390/M242-Microprozessoren/commit/39d6b9d022b444aa94ca55b4baa511a2f0841f1a)]
