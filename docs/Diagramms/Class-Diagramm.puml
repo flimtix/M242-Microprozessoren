@@ -1,0 +1,211 @@
+@startuml "M242 - Class Diagram"
+hide empty members
+
+package StateEventFiles <<Rectangle>> {
+    class StateEvent
+    {
+        .. Definitions ..
+        # TIMER_CHANGE_DELAY = 250 ms
+        # TIMER_CHANGE_DELAY_FAST = 50 ms
+        .. Static Variables ..
+        - {static} currentState : State
+        - {static} hasStateChanged : bool
+        .. Internal Functions ..
+        - ChangeState() : void
+        - InitStateEvent() : void
+        - ShowLedState() : void
+        - ShowCurrentTime() : void
+        ..
+        - Stoppuhr_LeereZeitAnzeigen() : void
+        - Stoppuhr_AktuelleZeitAnzeigen() : void
+        - Stoppuhr_ZwischenzeitAnzeigen() : void
+        - Stoppuhr_EndzeitAnzeigen() : void
+        ..
+        - Timer_EingerichteteZeitAnzeigen() : void
+        - Timer_ZeitErhoehen() : void
+        - Timer_ZeitVerringern() : void
+        - Timer_AktuelleZeitAnzeigen() : void
+        - Timer_Pausieren() : void
+        - Timer_TimerAbgelaufen() : void
+        .. Global Functions ..
+        + StateEventTask(void *argument) : void
+    }
+    enum State
+    {
+        STATE_STOPWATCH
+        STATE_TIMER
+    }
+    StateEvent -> State
+
+    class Stopwatch
+    {
+        .. Static Variables ..
+        - {static} isStopwatchRunning : bool
+        - {static} isShowingIntermediateTime : bool
+        - {static} currentTime : unsigned int
+        - {static} intermediateTime : unsigned int
+        .. Global Functions ..
+        + StopwatchTask(void *argument) : void
+        + StartStopwatch() : void
+        + StopStopwatch() : void
+        + ResetStopwatch() : void
+        + ShowIntermediateTime() : void
+        + GetStopwatchTime() : unsigned int
+        + IsStopwatchRunning() : bool
+        + IsShowingIntermediateTime() : bool
+    }
+
+    class Timer
+    {
+        .. Static Variables ..
+        - {static} isConfiguringTimer : bool
+        - {static} isTimerRunning : bool
+        - {static} isTimeUp : bool
+        - {static} currentTime : unsigned int
+        - {static} timerUpCallback : void(*)
+        .. Global Functions ..
+        + TimerTask(void *argument) : void
+        + SetTimerUpCallback(void (*callback)()) : void
+        + IncrementTime() : void
+        + DecrementTime() : void
+        + StartTimer() : void
+        + PauseTimer() : void
+        + ResumeTimer() : void
+        + ResetTimer() : void
+        + GetTimerTime() : unsigned int
+        + IsConfiguringTimer() : bool
+        + IsTimerRunning() : bool
+        + IsTimerPaused() : bool
+        + IsTimeUp() : bool
+    }
+
+    ' Includes
+    StateEvent --> Timer
+    StateEvent --> Stopwatch
+
+}
+
+package Drivers <<Rectangle>>
+{
+    class Buzzer_Treiber
+    {
+        .. Definitions ..
+        # SEMAPHORE_TIMEOUT = 100 ms
+        # DEFAULT_BUZZER_DELAY = 10 ms
+        .. Static Variables ..
+        + buzzerSemaphoreHandleId : osSemaphoreId_t
+        - {static} buzzUntil : long
+        - {static} isBuzzerOn : bool
+        .. Internal Functions ..
+        - SetBuzzer(bool state) : void
+        - IsBuzzTimeReached() : bool
+        .. Global Functions ..
+        + BuzzerTask(void *argument) : void
+        + BuzzerBeep(int length) : void
+    }
+    note left of Buzzer_Treiber::SetBuzzer
+      Writes to the buzzer pin and 
+      use the buzzer semaphore
+    end note
+
+    abstract SEG_Driver {}
+    note right of SEG_Driver
+        File for the 7-segment display
+        Not to be used directly but only by Display_Treiber
+    end note
+
+    class Display_Treiber <? extends SEG_Driver> 
+    {
+        .. Definitions ..
+        # FORMAT_DECIMAL_POINT_M_S_F = SEG_Driver_DP_2 | SEG_Driver_DP_4
+        # FORMAT_DECIMAL_POINT_M_S = SEG_Driver_DP_3
+        .. Internal Functions ..
+        - ConvertTimeToDisplay(unsinged int tenths, int *decimalPoint) : int
+        - WriteTimeToDisplay(unsigned int time, int flashSpeed) : void
+        .. Global Functions ..
+        + DisplayUpdateTask(void *argument) : void
+        + DisplayTime(unsigned int time) : void
+        + DisplayFlashTime(unsigned int time, DisplayFlashSpeed flashSpeed) : void
+    }
+    enum DisplayFlashSpeed
+    {
+        OFF
+        SLOW
+        FAST
+    }
+    Display_Treiber --* SEG_Driver
+    Display_Treiber -> DisplayFlashSpeed
+
+    class LED_Treiber
+    {
+        .. Definitions ..
+        # SEMAPHORE_TIMEOUT = 100 ms
+        .. Static Variables ..
+        + ledSemaphoreHandleId : osSemaphoreId_t
+        .. Static Functions ..
+        LED_Toggle(Led led) : void
+        LED_Set(Led led, bool state) : void
+    }
+    note top of LED_Treiber
+        LED_Toggle and LED_Set write to the LED pins and
+        use the LED semaphore
+    end note
+    enum Led
+    {
+        LED1
+        LED2
+        LED3
+        LED4
+    }
+    LED_Treiber -> Led
+
+    class Taster_Treiber
+    {
+        .. Definitions ..
+        # AMOUNT_OF_TASTERS = 3
+        .. Static Variables ..
+        - {static} TASTER_STATUS : bool[AMOUNT_OF_TASTERS]
+        - {static} TASTER_HAS_CHANGED : bool[AMOUNT_OF_TASTERS]
+        - {static} TASTER_CALLBACK : void(*)[AMOUNT_OF_TASTERS]
+        - {static} TASTER_LONG_CALLBACK : void(*)[AMOUNT_OF_TASTERS]
+        .. Static Functions ..
+        - Update_Taster(Taster taster) : void
+        - HasCallback(Taster taster) : bool
+        - HasLongCallback(Taster taster) : bool
+        - IsLongPress(Taster taster) : bool
+        - TriggerCallback(Taster taster) : void
+        .. Global Functions ..
+        + TasterTask(void *argument) : void
+        + Set_Taster_Callback(Taster taster, void (*callback)(void)) : void
+        + Set_Taster_Long_Callback(Taster taster, void (*callback)(void)) : void
+        + Taster_Pressed(Taster taster) : void
+        + Taster_Get(Taster taster) : bool
+    }
+    note left of Taster_Treiber::Update_Taster
+        Reads the taster pin and 
+        sets the taster status
+    end note
+    note left of Taster_Treiber::TasterTask
+        Triggers the callbacks and 
+        checks for long presses
+        When a callback is triggered,
+        the buzzer is beeped
+    end note
+    note left of Taster_Treiber::Taster_Pressed
+        Is called by the interrupt handler
+    end note
+    enum Taster
+    {
+        TASTER_1
+        TASTER_2
+        TASTER_3
+    }
+    Taster_Treiber -> Taster
+    Taster_Treiber --> Buzzer_Treiber
+}
+StateEvent --> Drivers
+note on link
+    The StateEvent uses all drivers
+end note
+
+@enduml
