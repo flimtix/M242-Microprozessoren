@@ -20,12 +20,6 @@ PURPOSE:    Dieser Modul dient als Vorlage für neue Treiber.
 //  3.     I N T E R N A L    D E F I N I T I O N S
 //  -----------------------------------------------
 
-// Semaphore controlling the access to the display
-osSemaphoreId_t displaySemaphoreHandleId;
-
-// Timeout for the semaphore before it will throw an error
-#define SEMAPHORE_TIMEOUT 100
-
 // Where to display the dots
 // Time format: Minutes . Seconds . Tenths
 #define FORMAT_DECIMAL_POINT_M_S_F SEG_Driver_DP_2 | SEG_Driver_DP_4
@@ -82,15 +76,11 @@ void Write_Time_To_Display(unsigned int time, int flashSpeed)
     int deciamelPoint = SEG_Driver_DP_OFF;
     int displayTime = Convert_Time_To_Display(time, &deciamelPoint);
 
-    // Semaphore to prevent the display from being updated by multiple tasks at the same time
-    // Wait for the semaphore to be released
-    osSemaphoreAcquire(displaySemaphoreHandleId, SEMAPHORE_TIMEOUT);
+    // In order to write the display, theoretically a semaphore would have to be used.
+    // But since the Seg_Driver was not written by me, I deliberately did without it.
 
     // Write the time to the display
     SEG_Driver_Write(displayTime, deciamelPoint, flashSpeed);
-
-    // Release the semaphore so other tasks can update the display
-    osSemaphoreRelease(displaySemaphoreHandleId);
 }
 
 //  ---------------------------------------

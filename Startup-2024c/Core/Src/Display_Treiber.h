@@ -26,9 +26,6 @@ PURPOSE:    Dieser Treiber ist eine Abstraktion für den Seg_Driver um die Bedie
 //  2.     G L O B A L    D E F I N I T I O N S
 //  -------------------------------------------
 
-// Semaphore controlling the access to the display
-extern osSemaphoreId_t displaySemaphoreHandleId;
-
 //  ---------------------------------------
 //  3.     G L O B A L    C O N S T A N T S
 //  ---------------------------------------
