@@ -34,7 +34,7 @@ PURPOSE:    Dieser Modul dient als Vorlage für neue Treiber.
 // Converts the time to the format of the display
 // The display can only display 4 digits
 // The time is in tenths of a second
-int Convert_Time_To_Display(unsigned int tenths, int *decimalPoint)
+int ConvertTimeToDisplay(unsigned int tenths, int *decimalPoint)
 {
     // Negative time is not supported by the display
     if (tenths <= 0)
@@ -70,11 +70,11 @@ int Convert_Time_To_Display(unsigned int tenths, int *decimalPoint)
 }
 
 // Writes the time to the SEG_Driver
-void Write_Time_To_Display(unsigned int time, int flashSpeed)
+void WriteTimeToDisplay(unsigned int time, int flashSpeed)
 {
     // Convert the time to the format of the display
     int deciamelPoint = SEG_Driver_DP_OFF;
-    int displayTime = Convert_Time_To_Display(time, &deciamelPoint);
+    int displayTime = ConvertTimeToDisplay(time, &deciamelPoint);
 
     // In order to write the display, theoretically a semaphore would have to be used.
     // But since the Seg_Driver was not written by me, I deliberately did without it.
@@ -99,14 +99,14 @@ void DisplayUpdateTask(void *argument)
 }
 
 // Updates the time of the display
-void Display_Time(unsigned int time)
+void DisplayTime(unsigned int time)
 {
     // Write the time to the display without flashing
-    Write_Time_To_Display(time, SEG_Driver_FLASH_OFF);
+    WriteTimeToDisplay(time, SEG_Driver_FLASH_OFF);
 }
 
 // Updates the time of the display with a flashing effect
-void Display_Flash_Time(unsigned int time, enum DisplayFlashSpeed flashSpeed)
+void DisplayFlashTime(unsigned int time, enum DisplayFlashSpeed flashSpeed)
 {
     // Convert the flash speed to the format of the SEG_Driver
     int flash;
@@ -124,5 +124,5 @@ void Display_Flash_Time(unsigned int time, enum DisplayFlashSpeed flashSpeed)
     }
 
     // Write the time to the display
-    Write_Time_To_Display(time, flash);
+    WriteTimeToDisplay(time, flash);
 }

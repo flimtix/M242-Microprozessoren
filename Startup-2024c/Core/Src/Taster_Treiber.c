@@ -108,13 +108,13 @@ bool IsLongPress(enum Taster taster)
 }
 
 // Calls the callback function for the given taster
-void Trigger_Callback(enum Taster taster)
+void TriggerCallback(enum Taster taster)
 {
     // Check if the taster is pressed long
     if (IsLongPress(taster))
     {
         // Call the buzzer
-        Buzzer_Beep(500);
+        BuzzerBeep(500);
 
         // Call the callback function for long press
         TASTER_LONG_CALLBACK[taster]();
@@ -122,7 +122,7 @@ void Trigger_Callback(enum Taster taster)
     else if (HasCallback(taster))
     {
         // Call the buzzer
-        Buzzer_Beep(300);
+        BuzzerBeep(300);
 
         // Call the callback function for short press
         TASTER_CALLBACK[taster]();
@@ -149,7 +149,7 @@ void TasterTask(void *argument)
                 TASTER_HAS_CHANGE[i] = false;
 
                 // Trigger the callback function
-                Trigger_Callback(i);
+                TriggerCallback(i);
             }
         }
 

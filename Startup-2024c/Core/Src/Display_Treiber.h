@@ -33,6 +33,7 @@ PURPOSE:    Dieser Treiber ist eine Abstraktion für den Seg_Driver um die Bedie
 // Contains the speed of the flashing effect
 enum DisplayFlashSpeed
 {
+    OFF = 0,
     SLOW = 1,
     FAST = 2,
 };
@@ -48,9 +49,9 @@ void DisplayUpdateTask(void *argument);
 
 // Updates the time of the display
 // The time should be in ms
-void Display_Time(unsigned int time);
+void DisplayTime(unsigned int time);
 
 // Updates the time of the display with a flashing effect
-void Display_Flash_Time(unsigned int time, enum DisplayFlashSpeed flashSpeed);
+void DisplayFlashTime(unsigned int time, enum DisplayFlashSpeed flashSpeed);
 
 #endif

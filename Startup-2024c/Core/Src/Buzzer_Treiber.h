@@ -41,6 +41,6 @@ extern osSemaphoreId_t buzzerSemaphoreHandleId;
 void BuzzerTask(void *argument);
 
 // Beep the buzzer for a given length in ms
-void Buzzer_Beep(int length);
+void BuzzerBeep(int length);
 
 #endif

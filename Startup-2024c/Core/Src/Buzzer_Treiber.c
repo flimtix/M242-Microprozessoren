@@ -111,7 +111,7 @@ void BuzzerTask(void *argument)
 }
 
 // Beep the buzzer for a given length in ms
-void Buzzer_Beep(int length)
+void BuzzerBeep(int length)
 {
     // Negative length is not supported by the buzzer
     if (length > 0)

@@ -189,7 +189,7 @@ void Timer_TimerAbgelaufen()
     Set_Taster_Callback(TASTER_3, NULL);
 
     // Activate the buzzer for 3 seconds
-    Buzzer_Beep(3000);
+    BuzzerBeep(3000);
 
     // Return to the taster and allow configuration again
     Timer_EingerichteteZeitAnzeigen();
@@ -348,34 +348,34 @@ void ShowCurrentTime()
     {
         if (hasStateChanged)
         {
-            Display_Flash_Time(GetStopwatchTime(), FAST);
+            DisplayFlashTime(GetStopwatchTime(), FAST);
         }
         else if (IsShowingIntermediateTime())
         {
-            Display_Flash_Time(GetStopwatchTime(), SLOW);
+            DisplayFlashTime(GetStopwatchTime(), SLOW);
         }
         else
         {
-            Display_Time(GetStopwatchTime());
+            DisplayTime(GetStopwatchTime());
         }
     }
     else if (currentState == STATE_TIMER)
     {
         if (hasStateChanged)
         {
-            Display_Flash_Time(GetTimerTime(), FAST);
+            DisplayFlashTime(GetTimerTime(), FAST);
         }
         else if (IsTimeUp())
         {
-            Display_Flash_Time(GetTimerTime(), SLOW);
+            DisplayFlashTime(GetTimerTime(), SLOW);
         }
         else if (IsTimerPaused())
         {
-            Display_Flash_Time(GetTimerTime(), SLOW);
+            DisplayFlashTime(GetTimerTime(), SLOW);
         }
         else
         {
-            Display_Time(GetTimerTime());
+            DisplayTime(GetTimerTime());
         }
     }
 }
