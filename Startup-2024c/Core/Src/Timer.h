@@ -62,11 +62,14 @@ void ResetTimer();
 // The time is in tenths of a second
 unsigned int GetTimerTime();
 
+// Returns true if the timer is configuring
+bool IsConfiguringTimer();
+
 // Returns true if the timer is running
 bool IsTimerRunning();
 
-// Returns true if the timer is configuring
-bool IsConfiguringTimer();
+// Returns true if the timer is paused
+bool IsTimerPaused();
 
 // Returns true if the time is up
 bool IsTimeUp();

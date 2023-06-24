@@ -47,16 +47,21 @@ void TimerTask(void *argument)
 {
     while (true)
     {
-        if (IsTimerRunning() && !IsConfiguringTimer() && !IsTimeUp())
+        // Only increase the time if the timer is running
+        if (IsTimerRunning() && !IsTimerPaused() && !IsConfiguringTimer() && !IsTimeUp())
         {
-            // Only increase the time if the timer is running and not paused
-            // Decrease the time by one tenth of a second
-            currentTime--;
-
             // Check if the time is up
-            if (currentTime <= 0)
+            if (currentTime > 1)
             {
+                // Decrease the time by one tenth of a second
+                currentTime--;
+            }
+            else
+            {
+                // The time is up and the timer is not running anymore and the time is not negative
+                currentTime = 0;
                 isTimeUp = true;
+
                 // Call the function to notify the timer is up
                 (*timerUpCallback)();
             }
@@ -90,17 +95,15 @@ void DecrementTime()
     // Only decrease the time if the timer is configuring
     if (IsConfiguringTimer())
     {
-        // Decrease the time by one second
-        int newCurrentTime = currentTime - 10;
-
-        // The time cannot be negative
-        if (newCurrentTime < 0)
+        if (currentTime > 10)
         {
-            currentTime = 0;
+            // Decrease the time by one second
+            currentTime -= 10;
         }
         else
         {
-            currentTime = newCurrentTime;
+            // The time cannot be negative
+            currentTime = 0;
         }
     }
 }
@@ -108,22 +111,19 @@ void DecrementTime()
 // Start the timer
 void StartTimer()
 {
-    // Only start the timer if the time is not up
-    if (IsConfiguringTimer() && !IsTimeUp())
-    {
-        // Timer is not configuring anymore
-        isConfiguringTimer = false;
+    // Timer is not configuring anymore
+    isConfiguringTimer = false;
 
-        // Start the timer
-        isTimerRunning = true;
-    }
+    // Start the timer
+    isTimeUp = false;
+    isTimerRunning = true;
 }
 
 // Pauses the timer
 void PauseTimer()
 {
-    // Only pause the timer if the timer is running and not up
-    if (!IsConfiguringTimer() && !IsTimeUp())
+    // Only pause the timer if the timer is running
+    if (IsTimerRunning())
     {
         // Pause the timer
         isTimerRunning = false;
@@ -134,7 +134,7 @@ void PauseTimer()
 void ResumeTimer()
 {
     // Only resume the timer if the timer is running and not up
-    if (!IsConfiguringTimer() && !IsTimeUp())
+    if (!IsConfiguringTimer())
     {
         // Resume the timer
         isTimerRunning = true;
@@ -163,16 +163,22 @@ unsigned int GetTimerTime()
     return currentTime;
 }
 
+// Returns true if the timer is configuring
+bool IsConfiguringTimer()
+{
+    return isConfiguringTimer;
+}
+
 // Returns true if the timer is running
 bool IsTimerRunning()
 {
     return isTimerRunning;
 }
 
-// Returns true if the timer is configuring
-bool IsConfiguringTimer()
+// Returns true if the timer is paused
+bool IsTimerPaused()
 {
-    return isConfiguringTimer;
+    return !isTimerRunning && !isConfiguringTimer;
 }
 
 // Returns true if the time is up

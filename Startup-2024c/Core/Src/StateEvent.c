@@ -21,13 +21,15 @@ PURPOSE:    Dieses Modul stellt die Funktionen zur Verfuegung, um
 //  3.     I N T E R N A L    D E F I N I T I O N S
 //  -----------------------------------------------
 
-#define TIMER_INCREMENT_DELAY 150
+// Delay for changing the configuring time in milliseconds
+#define TIMER_CHANGE_DELAY 250
+#define TIMER_CHANGE_FAST_DELAY 50
 
 // The current running state
 static enum State currentState = STATE_STOPWATCH;
 
 // Check if the state was changed recently
-static bool stateChanged = false;
+static bool hasStateChanged = false;
 
 //  -------------------------------------------
 //  4.     I N T E R N A L    F U N C T I O N S
@@ -35,7 +37,7 @@ static bool stateChanged = false;
 
 #pragma region Stopwatch State Handling
 
-// List all possible events so they can be called out of order
+// List all possible stopwatch events so they can be called out of order
 void Stoppuhr_LeereZeitAnzeigen();
 void Stoppuhr_AktuelleZeitAnzeigen();
 void Stoppuhr_ZwischenzeitAnzeigen();
@@ -61,7 +63,11 @@ void Stoppuhr_AktuelleZeitAnzeigen()
 
 void Stoppuhr_ZwischenzeitAnzeigen()
 {
-    ShowIntermediateTime();
+    // Don't show the intermediate time if it is already shown
+    if (!IsShowingIntermediateTime())
+    {
+        ShowIntermediateTime();
+    }
 
     Set_Taster_Callback(TASTER_1, NULL);
     Set_Taster_Callback(TASTER_2, &Stoppuhr_EndzeitAnzeigen);
@@ -81,6 +87,7 @@ void Stoppuhr_EndzeitAnzeigen()
 
 #pragma region Timer State Handling
 
+// List all possible timer events so they can be called out of order
 void Timer_EingerichteteZeitAnzeigen();
 void Timer_ZeitErhoehen();
 void Timer_ZeitVerringern();
@@ -90,7 +97,7 @@ void Timer_TimerAbgelaufen();
 
 void Timer_EingerichteteZeitAnzeigen()
 {
-    if (IsTimerRunning())
+    if (IsTimerRunning() || IsTimeUp())
     {
         ResetTimer();
     }
@@ -102,31 +109,57 @@ void Timer_EingerichteteZeitAnzeigen()
 
 void Timer_ZeitErhoehen()
 {
-    // Die Zeit solange erhöhen, bis der Taster losgelassen wird
+    // The amount of time the button is pressed
+    int incrementAmount = 0;
+
+    // Incerement the time until the button is released
     while (Taster_Get(TASTER_1))
     {
         IncrementTime();
 
-        // Die Zeit wird mit einem delay erhöht, damit die Zeit nicht zu schnell erhöht wird
-        osDelay(TIMER_INCREMENT_DELAY);
+        // Increment the time faster after a certain amount of time
+        incrementAmount++;
+
+        // The time is incremented with a delay so the time is not incremented too fast
+        if (incrementAmount > 10)
+        {
+            osDelay(TIMER_CHANGE_FAST_DELAY);
+        }
+        else
+        {
+            osDelay(TIMER_CHANGE_DELAY);
+        }
     }
 
-    // Zurück zum vorherigen Status
+    // Return to the previous state
     Timer_EingerichteteZeitAnzeigen();
 }
 
 void Timer_ZeitVerringern()
 {
-    // Die Zeit solange verringern, bis der Taster losgelassen wird
+    // The amount of time the button is pressed
+    int decrementAmount = 0;
+
+    // Decrement the time until the button is released
     while (Taster_Get(TASTER_2))
     {
         DecrementTime();
 
-        // Die Zeit wird mit einem delay verringert, damit die Zeit nicht zu schnell verringert wird
-        osDelay(TIMER_INCREMENT_DELAY);
+        // Decrement the time faster after a certain amount of time
+        decrementAmount++;
+
+        // The time is decremented with a delay so the time is not decremented too fast
+        if (decrementAmount > 10)
+        {
+            osDelay(TIMER_CHANGE_FAST_DELAY);
+        }
+        else
+        {
+            osDelay(TIMER_CHANGE_DELAY);
+        }
     }
 
-    // Zurück zum vorherigen Status
+    // Return to the previous state
     Timer_EingerichteteZeitAnzeigen();
 }
 
@@ -143,33 +176,34 @@ void Timer_Pausieren()
 {
     PauseTimer();
 
-    Set_Taster_Callback(TASTER_1, NULL);
-    Set_Taster_Callback(TASTER_2, &Timer_AktuelleZeitAnzeigen);
+    Set_Taster_Callback(TASTER_1, &Timer_AktuelleZeitAnzeigen);
+    Set_Taster_Callback(TASTER_2, NULL);
     Set_Taster_Callback(TASTER_3, &Timer_EingerichteteZeitAnzeigen);
 }
 
 void Timer_TimerAbgelaufen()
 {
-    // Status kann während der Ausführung nicht geändert werden
+    // Disable all taster callbacks so the user can't change the state while the buzzer is active
     Set_Taster_Callback(TASTER_1, NULL);
     Set_Taster_Callback(TASTER_2, NULL);
     Set_Taster_Callback(TASTER_3, NULL);
 
-    // Buzzer für 3 Sekunden aktivieren
+    // Activate the buzzer for 3 seconds
     Buzzer_Beep(3000);
 
-    // Zurück zum einrichten der Zeit
+    // Return to the taster and allow configuration again
     Timer_EingerichteteZeitAnzeigen();
+    currentState = STATE_TIMER;
+    hasStateChanged = true;
 }
 
 #pragma endregion
 
 // Change the state to the other state
-// This will stop the current state and start the other state
-// Supported states are in the enum State
-// This function should be called when TASTER_3 is pressed long
+// This will restore the previous state
 void ChangeState()
 {
+    // Change the state to the other state
     if (currentState == STATE_STOPWATCH)
     {
         // Find out which state was active before the stopwatch state
@@ -181,13 +215,13 @@ void ChangeState()
         {
             Timer_TimerAbgelaufen();
         }
-        else if (IsTimerRunning())
+        else if (IsTimerPaused())
         {
-            Timer_AktuelleZeitAnzeigen();
+            Timer_Pausieren();
         }
         else
         {
-            Stoppuhr_EndzeitAnzeigen();
+            Timer_AktuelleZeitAnzeigen();
         }
 
         currentState = STATE_TIMER;
@@ -203,6 +237,10 @@ void ChangeState()
         {
             Stoppuhr_AktuelleZeitAnzeigen();
         }
+        else if (GetStopwatchTime() > 0)
+        {
+            Stoppuhr_EndzeitAnzeigen();
+        }
         else
         {
             Stoppuhr_LeereZeitAnzeigen();
@@ -212,7 +250,7 @@ void ChangeState()
     }
 
     // The state was changed
-    stateChanged = true;
+    hasStateChanged = true;
 }
 
 // Initialize the state event
@@ -222,17 +260,19 @@ void InitStateEvent()
     ResetStopwatch();
     ResetTimer();
 
-    // At the beginning, the state is the stopwatch state
-    currentState = STATE_STOPWATCH;
-
     // Set the callback for the timer is up
     SetTimerUpCallback(&Timer_TimerAbgelaufen);
 
     // Set the callback to change the state
+    Set_Taster_Long_Callback(TASTER_1, NULL);
+    Set_Taster_Long_Callback(TASTER_2, NULL);
     Set_Taster_Long_Callback(TASTER_3, &ChangeState);
 
     // Initialize the state to the stopwatch state
     Stoppuhr_LeereZeitAnzeigen();
+
+    // At the beginning, the state is the stopwatch state
+    currentState = STATE_STOPWATCH;
 }
 
 // Show the current state on the LEDs
@@ -243,10 +283,10 @@ void ShowLedState()
     static int cycleCounter = 0;
     static bool shouldBlink = false;
 
-    // 2 Hz are 2'000 miliseconds
-    // 2'000 miliseconds / 50 (delay of the Task) = 40
+    // 2 Hz are 500 miliseconds
+    // 500 miliseconds / 50 (delay of the Task) = 10 / 2 (blinking) = 5
     cycleCounter++;
-    if (cycleCounter == 40)
+    if (cycleCounter == 5)
     {
         // Toggle the blinker state
         cycleCounter = 0;
@@ -290,7 +330,7 @@ void ShowLedState()
 void ShowCurrentTime()
 {
     // Check if the display should blink
-    if (stateChanged)
+    if (hasStateChanged)
     {
         static int cycleCounter = 0;
         cycleCounter++;
@@ -299,14 +339,14 @@ void ShowCurrentTime()
         {
             // Reset the state change
             cycleCounter = 0;
-            stateChanged = false;
+            hasStateChanged = false;
         }
     }
 
     // Show the time of the current state
     if (currentState == STATE_STOPWATCH)
     {
-        if (stateChanged)
+        if (hasStateChanged)
         {
             Display_Flash_Time(GetStopwatchTime(), FAST);
         }
@@ -321,11 +361,15 @@ void ShowCurrentTime()
     }
     else if (currentState == STATE_TIMER)
     {
-        if (stateChanged)
+        if (hasStateChanged)
         {
             Display_Flash_Time(GetTimerTime(), FAST);
         }
         else if (IsTimeUp())
+        {
+            Display_Flash_Time(GetTimerTime(), SLOW);
+        }
+        else if (IsTimerPaused())
         {
             Display_Flash_Time(GetTimerTime(), SLOW);
         }

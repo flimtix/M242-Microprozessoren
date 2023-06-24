@@ -72,29 +72,27 @@ void StopStopwatch()
 // Resets the stopwatch
 void ResetStopwatch()
 {
-    // Only reset the stopwatch if it is not running
-    if (!IsStopwatchRunning())
-    {
-        // Reset the stopwatch
-        isStopwatchRunning = false;
-        isShowingIntermediateTime = false;
+    // Reset the stopwatch
+    isStopwatchRunning = false;
+    isShowingIntermediateTime = false;
 
-        currentTime = 0;
-        intermediateTime = 0;
-    }
+    currentTime = 0;
+    intermediateTime = 0;
 }
 
 // Shows the intermediate time
 void ShowIntermediateTime()
 {
     intermediateTime = currentTime;
-    isShowingIntermediateTime = true;
+
+    // Only show the intermediate time if the stopwatch is running
+    isShowingIntermediateTime = IsStopwatchRunning();
 }
 
 // Returns either the current time or the intermediate time
 unsigned int GetStopwatchTime()
 {
-    if (isShowingIntermediateTime)
+    if (IsShowingIntermediateTime())
     {
         return intermediateTime;
     }
