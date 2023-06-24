@@ -1,7 +1,7 @@
 # Changelog
 
 <a name="1.2.0"></a>
-## 1.2.0 (2023-06-22)
+## 1.2.0 (2023-06-24)
 
 ### Added
 
@@ -15,6 +15,7 @@
 
 ### Changed
 
+- 🚚 : Renamed methods [[f6ca829](https://github.com/21r8390/M242-Microprozessoren/commit/f6ca82977e0de71750490b7e1d6befb45531d923)]
 - ⚡ : Use Led_Toggle instead of set [[e7afb0b](https://github.com/21r8390/M242-Microprozessoren/commit/e7afb0ba8315d17715dea1c8508e189b314db52f)]
 - ⚡ : Buzzer in its own task [[9164d65](https://github.com/21r8390/M242-Microprozessoren/commit/9164d652354567934f1af99eba9058955e09abd5)]
 - 🏗️ : Taster interrupt fires on low/high &amp; array for storage [[4b71dcf](https://github.com/21r8390/M242-Microprozessoren/commit/4b71dcf17a5e1fba930b4f51eb051c8f673fae3b)]
@@ -28,8 +29,13 @@
 - 🔧 : Prettier config [[850b329](https://github.com/21r8390/M242-Microprozessoren/commit/850b329bf64b34309e6aea9eacdadb9f762d0ff6)]
 - 🔧 : Add gitmoji config [[8e1e92a](https://github.com/21r8390/M242-Microprozessoren/commit/8e1e92a38e7587372bd7c4ef8cd1438e9674a474)]
 
+### Removed
+
+- ➖ : Removed semaphore for the display [[e0a9708](https://github.com/21r8390/M242-Microprozessoren/commit/e0a9708c63aaa407962cecde6b510fa2fee105a1)]
+
 ### Fixed
 
+- 🐛 : Bug fixes &amp; cleanup [[cdc5804](https://github.com/21r8390/M242-Microprozessoren/commit/cdc5804ae7b35ae14c92b4935de5a895042a4c78)]
 - 🚑 : Taster callbacks are triggered in a task [[db1efb0](https://github.com/21r8390/M242-Microprozessoren/commit/db1efb043d44ba4f67d55933863979e192e92355)]
 - 🐛 : Buzzer semaphore as extern [[1f796f3](https://github.com/21r8390/M242-Microprozessoren/commit/1f796f3962ef9ba9665ab18ba3a9b3f4b443afee)]
 - 🐛 : Only allow changes to timer when configuring [[3ca5b1c](https://github.com/21r8390/M242-Microprozessoren/commit/3ca5b1cf5d60111e29556475614f7295cf0da9b5)]
@@ -44,9 +50,13 @@
 
 ### Miscellaneous
 
+- 📝 : Component diagram &amp; Readme with UMLs [[ebba8f0](https://github.com/21r8390/M242-Microprozessoren/commit/ebba8f0eed84137973495e4eb8117cf70ed77884)]
+- 📝 : Added class diagram [[581a95b](https://github.com/21r8390/M242-Microprozessoren/commit/581a95bfa7d02e4e697f2e6eb28479fff0e65e41)]
+- 📝 : Update State-Event-Diagramm [[9ec98ef](https://github.com/21r8390/M242-Microprozessoren/commit/9ec98ef3215d93affb8b47c179bd16a723e56782)]
 - 📝 : Added State-Event_Diagramm [[34af5bf](https://github.com/21r8390/M242-Microprozessoren/commit/34af5bfce4cc5ab98ebd509ee25e89ff4c24fa31)]
 - 🧑‍💻 : Improved code and small bugs [[de66fdc](https://github.com/21r8390/M242-Microprozessoren/commit/de66fdce7744044265f1d37e0650129da4762177)]
 - 🩹 : Buzzer now works with the current ticks and allows multiple calls [[39d6b9d](https://github.com/21r8390/M242-Microprozessoren/commit/39d6b9d022b444aa94ca55b4baa511a2f0841f1a)]
+- 📝 : Update changelog [[ffeb75c](https://github.com/21r8390/M242-Microprozessoren/commit/ffeb75c573458940abadbc3442d30980d81d0c60)]
 -  Merge branch &#x27;main&#x27; of https://github.com/21r8390/M242-Microprozessoren [[55740e7](https://github.com/21r8390/M242-Microprozessoren/commit/55740e7662b083b7506e2709255ed95787878a54)]
 - ⚰️ : Aufgaben is not needed [[55485c5](https://github.com/21r8390/M242-Microprozessoren/commit/55485c56a127c1d4a3c0f7ac4af1e5f2edd2ac7e)]
 -  Merge branch &#x27;main&#x27; of https://github.com/21r8390/M242-Microprozessoren [[795bb4e](https://github.com/21r8390/M242-Microprozessoren/commit/795bb4ec40382ecbd61a99c991d9b1784fe0e5ca)]
