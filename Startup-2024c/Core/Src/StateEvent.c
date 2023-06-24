@@ -97,7 +97,7 @@ void Timer_TimerAbgelaufen();
 
 void Timer_EingerichteteZeitAnzeigen()
 {
-    if (IsTimerRunning() || IsTimeUp())
+    if (IsTimerRunning() || IsTimerPaused() || IsTimeUp())
     {
         ResetTimer();
     }
