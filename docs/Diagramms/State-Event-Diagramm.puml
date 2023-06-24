@@ -1,4 +1,5 @@
 @startuml "M242 - Stoppuhr & Timer - State-Event-Diagramm"
+title M242 - Stoppuhr & Timer - State-Event-Diagramm
 hide empty description
 
 ' LED & Buzzer über Kommentare darstellen

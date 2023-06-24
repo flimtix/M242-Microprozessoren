@@ -1,4 +1,5 @@
 @startuml "M242 - Class Diagram"
+title M242 - Class Diagram
 hide empty members
 
 package StateEventFiles <<Rectangle>> {

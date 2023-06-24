@@ -1,0 +1,23 @@
+@startuml "M242 - Component Diagram"
+title M242 - Component Diagram
+hide empty members
+
+package Tasks <<Rectangle>> {
+    component StopwatchTask <<Priority=High>>
+    component TimerTask <<Priority=High>>
+    component TasterTask <<Priority=AboveNormal7>>
+    component DisplayUpdateTask <<Priority=AboveNormal5>>
+    component StateEventTask <<Priority=Normal>>
+    component BuzzerTask <<Priority=Low1>>
+}
+
+package Semaphores <<Rectangle>> {
+    component BuzzerSemaphore
+    component LedSemaphore
+}
+BuzzerTask -> BuzzerSemaphore
+
+component LedTreiber
+LedTreiber -up-> LedSemaphore
+
+@enduml
